@@ -11,7 +11,9 @@
     <EditText
         android:id="@+id/email"
         android:layout_width="275dp"
-        android:layout_height="51dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginBottom="16dp"
         android:ems="10"
         android:hint="@string/username"
         android:inputType="textEmailAddress"
@@ -19,74 +21,60 @@
         android:textColorHint="#353333"
         android:textColorLink="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/password"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.566"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.675" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/password"
         android:layout_width="275dp"
-        android:layout_height="51dp"
-        android:layout_marginBottom="340dp"
+        android:layout_height="71dp"
+        android:layout_marginStart="68dp"
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword"
         android:textColorHint="#353333"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.566"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email"
-        app:layout_constraintVertical_bias="0.081" />
+        app:layout_constraintBottom_toTopOf="@+id/checkBox"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/parent"
-        android:layout_width="89dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="92dp"
-        android:layout_marginTop="42dp"
-        android:layout_marginBottom="170dp"
+        android:layout_width="100dp"
+        android:layout_height="51dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginBottom="132dp"
         android:backgroundTint="#5517C3"
         android:text="@string/parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password"
-        app:layout_constraintVertical_bias="0.215" />
+        app:layout_constraintEnd_toStartOf="@+id/teacher"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/teacher"
-        android:layout_width="89dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="42dp"
-        android:layout_marginEnd="88dp"
-        android:layout_marginBottom="176dp"
+        android:layout_width="109dp"
+        android:layout_height="52dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginBottom="132dp"
         android:backgroundTint="#5517C3"
         android:text="@string/teacher"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.877"
-        app:layout_constraintStart_toEndOf="@+id/parent"
-        app:layout_constraintTop_toBottomOf="@+id/password"
-        app:layout_constraintVertical_bias="0.229" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <CheckBox
         android:id="@+id/checkBox"
-        android:layout_width="263dp"
-        android:layout_height="20dp"
+        android:layout_width="298dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="200dp"
         android:text="@string/keep_me_logged_in"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password"
-        app:layout_constraintVertical_bias="0.058" />
+        app:layout_constraintHorizontal_bias="0.601"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/reghere"
         android:layout_width="123dp"
         android:layout_height="21dp"
-        android:layout_marginTop="104dp"
+        android:layout_marginBottom="24dp"
         android:contextClickable="true"
         android:text="@string/register_here"
         android:textColor="#142EBD"
@@ -95,21 +83,19 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox"
-        app:layout_constraintVertical_bias="0.855" />
+        app:layout_constraintHorizontal_bias="0.527"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="259dp"
-        android:layout_height="134dp"
-        android:layout_marginTop="72dp"
+        android:layout_height="130dp"
+
+        android:layout_marginBottom="32dp"
         app:layout_constraintBottom_toTopOf="@+id/email"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.421"
+        app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.566"
         app:srcCompat="@drawable/logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
