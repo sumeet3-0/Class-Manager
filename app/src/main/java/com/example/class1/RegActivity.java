@@ -23,9 +23,12 @@ public class RegActivity extends AppCompatActivity {
     TextView rules;
     private static final String TAG = "EmailPassword";
     private EditText mEmailField;
+    private EditText studentName;
     private EditText mPasswordField;
     private FirebaseAuth mAuth;
     private Button submit;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +37,8 @@ public class RegActivity extends AppCompatActivity {
         mPasswordField = findViewById(R.id.password);
         mAuth = FirebaseAuth.getInstance();
         rules = findViewById(R.id.rules);
-        submit =findViewById(R.id.submit);
+        submit = findViewById(R.id.submit);
+        studentName = findViewById(R.id.studentName);
         rules.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,20 +56,17 @@ public class RegActivity extends AppCompatActivity {
         });
 
     }
+
     private void createAccount(String email, String password) {
         Log.d(TAG, "createAccount:" + email);
-              // [START create_user_with_email]
+        // [START create_user_with_email]
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                         } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
                             Toast.makeText(getApplicationContext(), "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                         }

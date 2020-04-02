@@ -110,6 +110,10 @@
     <string name="teacher">Teacher</string>
     <string name="keep_me_logged_in">Keep me logged in</string>
     <string name="register_here">Register Here</string>
+    <string name="attendence">Attendence</string>
+    <string name="marks">Marks</string>
+    <string name="fees">Fees</string>
+    <string name="notifications">Notifications</string>
     <string-array name="std">
         <item>8th</item>
         <item>9th</item>

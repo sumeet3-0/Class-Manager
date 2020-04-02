@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Admin">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="145dp"
+        android:layout_height="148dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="120dp">
+
+
+        <TextView
+            android:id="@+id/attendence"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="120dp"
+            android:text="@string/attendence"
+            android:textColor="#050505"
+            android:textSize="24sp"
+            android:gravity="center"/>
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="140dp"
+            android:layout_height="120dp"
+            app:srcCompat="@drawable/attendence" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="145dp"
+        android:layout_height="148dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="120dp">
+
+
+        <TextView
+            android:id="@+id/marks"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="120dp"
+            android:gravity="center"
+            android:text="@string/marks"
+            android:textColor="#050505"
+            android:textSize="24sp" />
+
+        <ImageView
+            android:id="@+id/marksImg"
+            android:layout_width="140dp"
+            android:layout_height="120dp"
+            app:srcCompat="@drawable/marks" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="145dp"
+        android:layout_height="148dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="280dp">
+
+
+        <TextView
+            android:id="@+id/fees"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="120dp"
+            android:gravity="center"
+            android:text="@string/fees"
+            android:textColor="#050505"
+            android:textSize="24sp" />
+
+        <ImageView
+            android:id="@+id/feesImg"
+            android:layout_width="140dp"
+            android:layout_height="120dp"
+            app:srcCompat="@drawable/fees" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="145dp"
+        android:layout_height="148dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="438dp">
+
+
+        <TextView
+            android:id="@+id/noti"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="120dp"
+            android:gravity="center"
+            android:text="@string/notifications"
+            android:textColor="#050505"
+            android:textSize="24sp" />
+
+        <ImageView
+            android:id="@+id/notiImg"
+            android:layout_width="140dp"
+            android:layout_height="120dp"
+            app:srcCompat="@drawable/ring" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="145dp"
+        android:layout_height="148dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="280dp">
+
+
+        <TextView
+            android:id="@+id/req"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="120dp"
+            android:gravity="center"
+            android:text="Requests"
+            android:textColor="#050505"
+            android:textSize="24sp" />
+
+        <ImageView
+            android:id="@+id/erqImg"
+            android:layout_width="140dp"
+            android:layout_height="120dp"
+            app:srcCompat="@drawable/req" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="145dp"
+        android:layout_height="148dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="438dp">
+
+
+        <TextView
+            android:id="@+id/req"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="120dp"
+            android:gravity="center"
+            android:text="Requests"
+            android:textColor="#050505"
+            android:textSize="24sp" />
+
+        <ImageView
+            android:id="@+id/erqImg"
+            android:layout_width="140dp"
+            android:layout_height="120dp"
+            app:srcCompat="@drawable/req" />
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

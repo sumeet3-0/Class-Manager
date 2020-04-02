@@ -19,12 +19,13 @@
             android:layout_height="match_parent">
 
             <EditText
+                android:id="@+id/studentName"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="50dp"
                 android:layout_marginTop="420dp"
-                android:hint="@string/full_name"
-                android:freezesText="true"/>
+                android:freezesText="true"
+                android:hint="@string/full_name" />
 
             <Button
                 android:id="@+id/chooseImage"
