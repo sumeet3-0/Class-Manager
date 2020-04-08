@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".Admin">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="145dp"
         android:layout_height="148dp"
         android:layout_marginStart="50dp"
@@ -19,10 +21,10 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_marginTop="120dp"
+            android:gravity="center"
             android:text="@string/attendence"
             android:textColor="#050505"
-            android:textSize="24sp"
-            android:gravity="center"/>
+            android:textSize="24sp" />
 
         <ImageView
             android:id="@+id/imageView3"
@@ -32,11 +34,12 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
         android:layout_width="145dp"
         android:layout_height="148dp"
-        android:layout_marginEnd="50dp"
         android:layout_marginStart="200dp"
-        android:layout_marginTop="120dp">
+        android:layout_marginTop="120dp"
+        android:layout_marginEnd="50dp">
 
 
         <TextView
@@ -57,11 +60,12 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView3"
         android:layout_width="145dp"
         android:layout_height="148dp"
-        android:layout_marginEnd="50dp"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="280dp">
+        android:layout_marginTop="280dp"
+        android:layout_marginEnd="50dp">
 
 
         <TextView
@@ -82,11 +86,12 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView4"
         android:layout_width="145dp"
         android:layout_height="148dp"
-        android:layout_marginEnd="50dp"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="438dp">
+        android:layout_marginTop="438dp"
+        android:layout_marginEnd="50dp">
 
 
         <TextView
@@ -107,11 +112,12 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView5"
         android:layout_width="145dp"
         android:layout_height="148dp"
-        android:layout_marginEnd="50dp"
         android:layout_marginStart="200dp"
-        android:layout_marginTop="280dp">
+        android:layout_marginTop="280dp"
+        android:layout_marginEnd="50dp">
 
 
         <TextView
@@ -132,15 +138,16 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView6"
         android:layout_width="145dp"
         android:layout_height="148dp"
-        android:layout_marginEnd="50dp"
         android:layout_marginStart="200dp"
-        android:layout_marginTop="438dp">
+        android:layout_marginTop="438dp"
+        android:layout_marginEnd="50dp">
 
 
         <TextView
-            android:id="@+id/req"
+            android:id="@+id/extra"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_marginTop="120dp"
@@ -150,9 +157,9 @@
             android:textSize="24sp" />
 
         <ImageView
-            android:id="@+id/erqImg"
+            android:id="@+id/extraImg"
             android:layout_width="140dp"
             android:layout_height="120dp"
             app:srcCompat="@drawable/req" />
     </androidx.cardview.widget.CardView>
-</RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

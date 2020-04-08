@@ -19,7 +19,7 @@
             android:layout_height="match_parent">
 
             <EditText
-                android:id="@+id/studentName"
+                android:id="@+id/name"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="50dp"
@@ -35,6 +35,7 @@
                 android:layout_marginTop="340dp"
                 android:text="Choose Image" />
             <EditText
+                android:id="@+id/school"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="50dp"
@@ -42,6 +43,7 @@
                 android:hint="@string/school"
                 android:freezesText="true"/>
             <EditText
+                android:id="@+id/parent"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="50dp"
@@ -50,6 +52,7 @@
                 android:freezesText="true"
                 />
             <EditText
+                android:id="@+id/occParent"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="50dp"
@@ -57,6 +60,7 @@
                 android:freezesText="true"
                 android:hint="@string/occupation_of_parent"/>
             <EditText
+                android:id="@+id/address"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="50dp"
@@ -89,7 +93,7 @@
                 app:srcCompat="@drawable/ic_image_black_24dp" />
 
             <EditText
-                android:id="@+id/editText3"
+                android:id="@+id/mobNo"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="50dp"
