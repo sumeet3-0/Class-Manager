@@ -15,7 +15,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UpdateAttendance"></activity>
+        <activity android:name=".ViewAByDate"></activity>
+        <activity android:name=".ViewByDate" />
+        <activity android:name=".ViewAByName" />
+        <activity android:name=".UpdateAttendance" />
         <activity android:name=".UpdateAttendence" />
         <activity android:name=".AdminAttendence1" />
         <activity android:name=".Admin" />
