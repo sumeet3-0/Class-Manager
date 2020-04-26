@@ -60,7 +60,7 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView3"
+        android:id="@+id/fees"
         android:layout_width="145dp"
         android:layout_height="148dp"
         android:layout_marginStart="50dp"

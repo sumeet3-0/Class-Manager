@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UpdateMarks">
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginRight="10dp"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/nameField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginRight="10dp"
+        android:text="Loding name..."
+        android:textSize="40sp" />
+
+    <Button
+        android:id="@+id/chooseDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="520dp"
+        android:text="Choose Date"
+        android:textSize="20dp"/>
+
+
+    <EditText
+        android:id="@+id/marks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Marks"
+        android:textSize="20sp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="350dp"
+        android:inputType="number"/>
+
+    <TextView
+        android:id="@+id/temp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginStart="185dp"
+        android:layout_marginTop="360dp"
+        android:text="out of"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/outof"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Marks"
+        android:textSize="20sp"
+        android:layout_marginStart="260dp"
+        android:inputType="number"
+        android:layout_marginTop="350dp"/>
+
+    <Button
+        android:id="@+id/prev"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="450dp"
+        android:text="PREV"
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="280dp"
+        android:layout_marginTop="450dp"
+        android:text="NEXT"
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="450dp"
+        android:text="SUBMIT"
+        android:textSize="20dp" />
+
+</RelativeLayout>

@@ -9,13 +9,14 @@ import androidx.cardview.widget.CardView;
 
 public class Admin extends AppCompatActivity {
 
-    CardView attendenceCV,marksCV;
+    CardView attendenceCV,marksCV,feesCV;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
         attendenceCV = findViewById(R.id.attendenceCV);
         marksCV = findViewById(R.id.marksCV);
+        feesCV = findViewById(R.id.fees);
         attendenceCV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -26,7 +27,14 @@ public class Admin extends AppCompatActivity {
         marksCV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),AdminAttendence1.class);
+                Intent i = new Intent(getApplicationContext(),AdminMarks1.class);
+                startActivity(i);
+            }
+        });
+        feesCV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),AdminMarks1.class);
                 startActivity(i);
             }
         });
