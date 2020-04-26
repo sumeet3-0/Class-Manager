@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity  {
     private EditText mEmailField;
     private EditText mPasswordField;
     private FirebaseAuth mAuth;
-    private Button submit;
+    private Button teacher,parent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +36,8 @@ public class MainActivity extends AppCompatActivity  {
         mEmailField = findViewById(R.id.email);
         mPasswordField = findViewById(R.id.password);
         mAuth = FirebaseAuth.getInstance();
-        submit =findViewById(R.id.teacher);
+        teacher =findViewById(R.id.teacher);
+        parent = findViewById(R.id.parent);
         regHere.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,7 +45,14 @@ public class MainActivity extends AppCompatActivity  {
                 startActivity(i);
             }
         });
-        submit.setOnClickListener(new View.OnClickListener() {
+        parent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),Admin.class);
+                startActivity(i);
+            }
+        });
+        teacher.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 signIn(mEmailField.getText().toString(), mPasswordField.getText().toString());
