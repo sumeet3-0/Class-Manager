@@ -60,7 +60,7 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/fees"
+        android:id="@+id/feesCV"
         android:layout_width="145dp"
         android:layout_height="148dp"
         android:layout_marginStart="50dp"
@@ -112,7 +112,7 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView5"
+        android:id="@+id/viewCV"
         android:layout_width="145dp"
         android:layout_height="148dp"
         android:layout_marginStart="200dp"
@@ -126,15 +126,15 @@
             android:layout_height="30dp"
             android:layout_marginTop="120dp"
             android:gravity="center"
-            android:text="Requests"
+            android:text="View Students"
             android:textColor="#050505"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
 
         <ImageView
-            android:id="@+id/erqImg"
+            android:id="@+id/view"
             android:layout_width="140dp"
             android:layout_height="120dp"
-            app:srcCompat="@drawable/req" />
+            app:srcCompat="@drawable/view" />
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView

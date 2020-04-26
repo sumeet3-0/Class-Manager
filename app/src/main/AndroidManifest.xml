@@ -15,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ViewMByName"></activity>
+        <activity android:name=".ViewList"></activity>
+        <activity android:name=".ViewMByName" />
         <activity android:name=".ViewMByDate" />
         <activity android:name=".UpdateMarks" />
         <activity android:name=".AdminMarks1" />
