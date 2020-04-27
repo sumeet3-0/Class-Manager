@@ -41,7 +41,7 @@ public class ViewList extends AppCompatActivity {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                            String s =postSnapshot.getValue()+" : "+postSnapshot.getKey();
+                            String s =postSnapshot.getKey()+" : "+postSnapshot.getValue();
                             recordList.add(s);
                         }
                         arrayAdapter =

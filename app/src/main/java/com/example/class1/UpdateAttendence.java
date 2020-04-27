@@ -35,7 +35,7 @@ public class UpdateAttendence extends AppCompatActivity implements DatePickerDia
     Button next,prev,submit,chooseDate;
     String Date;
     int i =0;
-    boolean flag = false;
+    boolean flag = false,dateSet=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,12 +55,18 @@ public class UpdateAttendence extends AppCompatActivity implements DatePickerDia
         findViewById(R.id.chooseDate).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                dateSet=true;
                 showDatePickerDialog();
             }
         });
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!dateSet)
+                {
+                    Toast.makeText(getApplicationContext(),"Set the Date First",Toast.LENGTH_SHORT).show();
+                }
+                else
                 if(flag)
                 {
                     String s;
@@ -91,6 +97,11 @@ public class UpdateAttendence extends AppCompatActivity implements DatePickerDia
                 next.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        if(!dateSet)
+                        {
+                            Toast.makeText(getApplicationContext(),"Set the Date First",Toast.LENGTH_SHORT).show();
+                        }
+                        else
                         if(i!=usersList.size()-1)
                         {
                             String s;
@@ -110,6 +121,11 @@ public class UpdateAttendence extends AppCompatActivity implements DatePickerDia
                 prev.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        if(!dateSet)
+                        {
+                            Toast.makeText(getApplicationContext(),"Set the Date First",Toast.LENGTH_SHORT).show();
+                        }
+                        else
                         if(i!=0)
                         {
                             String s;

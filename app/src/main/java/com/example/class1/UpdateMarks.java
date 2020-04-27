@@ -3,6 +3,7 @@ package com.example.class1;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -33,7 +34,7 @@ public class UpdateMarks extends AppCompatActivity implements DatePickerDialog.O
     String Date;
     EditText marks,outof;
     int i =0;
-    boolean flag=false;
+    boolean flag=false , dateSet=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,12 +54,23 @@ public class UpdateMarks extends AppCompatActivity implements DatePickerDialog.O
         findViewById(R.id.chooseDate).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                dateSet=true;
                 showDatePickerDialog();
             }
         });
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(TextUtils.isEmpty(marks.getText().toString()) || TextUtils.isEmpty(outof.getText().toString()))
+                {
+                    Toast.makeText(getApplicationContext(),"Set the Marks First",Toast.LENGTH_SHORT).show();
+                }
+                else
+                if(!dateSet)
+                {
+                    Toast.makeText(getApplicationContext(),"Set the Date First",Toast.LENGTH_SHORT).show();
+                }
+                else
                 if(flag)
                 {
                     String s = marks.getText().toString()+"/"+outof.getText().toString();
@@ -87,6 +99,16 @@ public class UpdateMarks extends AppCompatActivity implements DatePickerDialog.O
                 next.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        if(TextUtils.isEmpty(marks.getText().toString()) || TextUtils.isEmpty(outof.getText().toString()))
+                        {
+                            Toast.makeText(getApplicationContext(),"Set the Marks First",Toast.LENGTH_SHORT).show();
+                        }
+                        else
+                        if(!dateSet)
+                        {
+                            Toast.makeText(getApplicationContext(),"Set the Date First",Toast.LENGTH_SHORT).show();
+                        }
+                        else
                         if(i!=usersList.size()-1)
                         {
                             String s = marks.getText().toString()+"/"+outof.getText().toString();
@@ -104,6 +126,16 @@ public class UpdateMarks extends AppCompatActivity implements DatePickerDialog.O
                 prev.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        if(TextUtils.isEmpty(marks.getText().toString()) || TextUtils.isEmpty(outof.getText().toString()))
+                        {
+                            Toast.makeText(getApplicationContext(),"Set the Marks First",Toast.LENGTH_SHORT).show();
+                        }
+                        else
+                        if(!dateSet)
+                        {
+                            Toast.makeText(getApplicationContext(),"Set the Date First",Toast.LENGTH_SHORT).show();
+                        }
+                        else
                         if(i!=0)
                         {
                             String s = marks.getText().toString()+"/"+outof.getText().toString();
