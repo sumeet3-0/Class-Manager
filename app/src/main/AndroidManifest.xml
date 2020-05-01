@@ -6,7 +6,8 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+        <uses-feature android:name="android.hardware.camera" android:required="false"/>
 
     <application
         android:allowBackup="true"
@@ -21,22 +22,24 @@
         <activity android:name=".ViewMByDate" />
         <activity android:name=".UpdateMarks" />
         <activity android:name=".AdminMarks1" />
-        <activity android:name=".Marks1" />
+        <activity android:name=".SplashScreen" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".ViewAByDate" />
-        <activity android:name=".ViewByDate" />
+
         <activity android:name=".ViewAByName" />
-        <activity android:name=".UpdateAttendance" />
+
         <activity android:name=".UpdateAttendence" />
         <activity android:name=".AdminAttendence1" />
         <activity android:name=".Admin" />
         <activity android:name=".TermsConditions" />
         <activity android:name=".RegActivity" />
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

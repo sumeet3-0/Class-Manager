@@ -28,12 +28,14 @@
                 android:hint="@string/full_name" />
 
             <Button
-                android:id="@+id/chooseImage"
+                android:id="@+id/save"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="135dp"
                 android:layout_marginTop="340dp"
-                android:text="Choose Image" />
+
+                android:text="Upload Photo" />
+
             <EditText
                 android:id="@+id/school"
                 android:layout_width="300dp"
@@ -90,7 +92,7 @@
                 android:layout_marginLeft="110dp"
                 android:layout_marginTop="145dp"
 
-                app:srcCompat="@drawable/ic_image_black_24dp" />
+                app:srcCompat="@drawable/camera_logo" />
 
             <EditText
                 android:id="@+id/mobNo"
@@ -122,9 +124,8 @@
                 android:layout_marginStart="50dp"
                 android:layout_marginTop="980dp"
                 android:ems="10"
-                android:hint="@string/password"
-                android:inputType="textPassword"
-                 />
+                android:hint="Set password"
+                android:inputType="textPassword" />
 
             <Spinner
                 android:id="@+id/std"
@@ -135,12 +136,19 @@
                 android:entries="@array/std"
                 android:visibility="visible" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="1270dp"
+                android:text="Please tick the below checkbox before submitting form"/>
+
             <Spinner
                 android:id="@+id/board"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="50dp"
-                android:layout_marginTop="1060dp"
+                android:layout_marginTop="1080dp"
                 android:entries="@array/Board" />
 
             <Spinner
@@ -148,7 +156,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="50dp"
-                android:layout_marginTop="1140dp"
+                android:layout_marginTop="1150dp"
                 android:entries="@array/Medium" />
             <ProgressBar
                 android:id="@+id/progressBar"
@@ -170,7 +178,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="147dp"
-                android:layout_marginTop="1307dp"
+                android:layout_marginTop="1305dp"
                 android:text="@string/terms_and_conditions"
                 android:textColor="#203FEC"
                 android:freezesText="true"
@@ -184,6 +192,15 @@
                 android:layout_marginTop="1360dp"
                 android:layout_marginBottom="80dp"
                 android:text="@string/submit_form" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="309dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="1030dp"
+                android:ems="10"
+                android:text="Password should contain minimum 6 characters" />
 
 
         </RelativeLayout>
