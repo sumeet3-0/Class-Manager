@@ -18,6 +18,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 
 public class MainActivity extends AppCompatActivity  {
@@ -28,6 +33,9 @@ public class MainActivity extends AppCompatActivity  {
     private EditText mPasswordField;
     private FirebaseAuth mAuth;
     private Button teacher,parent;
+    private FirebaseDatabase database;
+    private DatabaseReference reference ;
+    private String userName,admin="admin";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +46,8 @@ public class MainActivity extends AppCompatActivity  {
         mAuth = FirebaseAuth.getInstance();
         teacher =findViewById(R.id.teacher);
         parent = findViewById(R.id.parent);
+        database = FirebaseDatabase.getInstance();
+        reference = database.getReference();
         regHere.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,31 +58,69 @@ public class MainActivity extends AppCompatActivity  {
         parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),Admin.class);
-                startActivity(i);
+                signIn(mEmailField.getText().toString(), mPasswordField.getText().toString(),"P");
             }
         });
         teacher.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                signIn(mEmailField.getText().toString(), mPasswordField.getText().toString());
+                signIn(mEmailField.getText().toString(), mPasswordField.getText().toString(),"A");
             }
         });
 
     }
-    private void signIn(String email, String password) {
+    private void signIn(final String email, String password, final String status) {
         // [START sign_in_with_email]
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "signInWithEmail:success");
-                            Toast.makeText(getApplicationContext(),"Sign in success",Toast.LENGTH_LONG).show();
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Intent i = new Intent(getApplicationContext(), Admin.class);
-                            startActivity(i);
+                           if(status=="A")
+                           {
+                               reference.child("Mapp").child(user.getUid()).addValueEventListener(new ValueEventListener() {
+                                   @Override
+                                   public void onDataChange(DataSnapshot dataSnapshot) {
+                                       userName = dataSnapshot.getValue().toString();
+                                       if(userName.equals(admin))
+                                       {
+                                           Toast.makeText(getApplicationContext(), "Sign in Success!!!\nWelcome "+userName,Toast.LENGTH_LONG).show();
+                                           Intent i = new Intent(getApplicationContext(), Admin.class);
+                                           startActivity(i);
+                                       }
+                                       else
+                                       {
+                                           Toast.makeText(getApplicationContext(), "Not an Admin!!!",
+                                                   Toast.LENGTH_LONG).show();
+                                       }
+
+                                   }
+                                   @Override
+                                   public void onCancelled(@NonNull DatabaseError databaseError) {
+                                       Log.w("unique", "loadPost:onCancelled", databaseError.toException());
+                                   }
+                               });
+
+                           }
+                           else
+                           {
+                               reference.child("Mapp").child(user.getUid()).addValueEventListener(new ValueEventListener() {
+                                   @Override
+                                   public void onDataChange(DataSnapshot dataSnapshot) {
+                                       userName = dataSnapshot.getValue().toString();
+                                       Toast.makeText(getApplicationContext(), "Sign in Success!!!\nWelcome "+userName,Toast.LENGTH_LONG).show();
+                                       Intent i = new Intent(getApplicationContext(), Parent.class);
+                                       startActivity(i);
+
+                                   }
+                                   @Override
+                                   public void onCancelled(@NonNull DatabaseError databaseError) {
+                                       Log.w("unique", "loadPost:onCancelled", databaseError.toException());
+                                   }
+                               });
+                           }
+
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());

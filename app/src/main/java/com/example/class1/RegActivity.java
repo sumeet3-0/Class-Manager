@@ -4,12 +4,10 @@ package com.example.class1;
 
 
 import android.content.Intent;
-
 import android.graphics.Bitmap;
 import android.graphics.ImageDecoder;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
@@ -134,16 +132,9 @@ public class RegActivity extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                saveUserInformation();
+                showImageChooser();
             }
         });
-
-    studentImage.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            showImageChooser();
-        }
-    });
         rules.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -187,6 +178,7 @@ public class RegActivity extends AppCompatActivity {
                     String mPasswordFieldS = mPasswordField.getText().toString();
                     Info info = new Info(nameS, schoolS, parentS, occParentS, addressS, mobNoS, mEmailFieldS, mPasswordFieldS, boardS, mediumS, stdS);
                     reference.child(nameS).setValue(info);
+                    saveUserInformation();
                     Intent i = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(i);
                 }

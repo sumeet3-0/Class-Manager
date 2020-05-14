@@ -34,7 +34,7 @@
                 android:layout_marginLeft="135dp"
                 android:layout_marginTop="340dp"
 
-                android:text="Upload Photo" />
+                android:text="Choose Image" />
 
             <EditText
                 android:id="@+id/school"
@@ -114,7 +114,6 @@
                 android:layout_marginTop="900dp"
                 android:ems="10"
                 android:hint="@string/email"
-                android:inputType="textEmailAddress"
                  />
 
             <EditText

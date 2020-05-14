@@ -4,10 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ECC19C"
+    android:outlineAmbientShadowColor="#020202"
+    android:verticalScrollbarPosition="left"
+    android:visibility="visible"
     tools:context=".ViewAByName">
 
     <ListView
         android:id="@+id/List"
+        style="@android:style/Widget.ListView.Menu"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:background="#ECC19C"
+        android:cacheColorHint="#000000"
+        android:transitionGroup="false" />
 </RelativeLayout>
