@@ -3,13 +3,14 @@ package com.example.class1;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 public class Admin extends AppCompatActivity {
 
-    CardView attendenceCV,marksCV,feesCV,viewCV;
+    CardView attendenceCV,marksCV,feesCV,viewCV,notiCV,reqCV;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,6 +19,8 @@ public class Admin extends AppCompatActivity {
         marksCV = findViewById(R.id.marksCV);
         feesCV = findViewById(R.id.feesCV);
         viewCV = findViewById(R.id.viewCV);
+        notiCV = findViewById(R.id.viewCV);
+        reqCV = findViewById(R.id.viewCV);
         attendenceCV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -35,16 +38,34 @@ public class Admin extends AppCompatActivity {
         feesCV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),AdminMarks1.class);
-                startActivity(i);
+                Toast.makeText(getApplicationContext(), "Under Development!!",
+                        Toast.LENGTH_SHORT).show();
             }
         });
         viewCV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),ViewList.class);
-                startActivity(i);
+                Toast.makeText(getApplicationContext(), "Under Development!!",
+                        Toast.LENGTH_SHORT).show();
             }
+
         });
+        notiCV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Under Development!!",
+                        Toast.LENGTH_SHORT).show();
+            }
+
+        });
+        reqCV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Under Development!!",
+                        Toast.LENGTH_SHORT).show();
+            }
+
+        });
+
     }
 }

@@ -59,7 +59,7 @@ public class RegActivity extends AppCompatActivity {
     String profileImageurl;
     Uri uriProfileImage;
     CheckBox checkBox2;
-    public  static final Pattern EMAIL_ADDRESS=Pattern.compile("[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}"+"\\@"+"[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}"+"(" + "\\." + "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}"+")+");
+    public static final Pattern EMAIL_ADDRESS=Pattern.compile("[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}"+"\\@"+"[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}"+"(" + "\\." + "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}"+")+");
 
 
     @Override
@@ -84,50 +84,7 @@ public class RegActivity extends AppCompatActivity {
         progressBar=findViewById(R.id.progressBar);
         studentImage=findViewById(R.id.studentImage);
         checkBox2=findViewById(R.id.checkBox2);
-
-       /*
-
-
-
-
-
-        String mobNoS = mobNo.getText().toString();
-        if(mobNoS.length()!=10){
-            mobNo.setError("Please Enter valid name");
-            mobNo.setText("");
-        }
-
-      //  String emailPattern="[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-        String mEmailFieldS = mEmailField.getText().toString();
-
-        if(mEmailFieldS.isEmpty()){
-            mEmailField.setError("Please Enter valid email address");
-            mEmailField.setText("");
-        }else{
-            if(!Patterns.EMAIL_ADDRESS.matcher(mEmailFieldS).matches()){
-                mEmailField.setError("Please Enter valid email address");
-                mEmailField.setText("");
-            }
-        }
-        String boardS =board.getSelectedItem().toString();
-        String mediumS = medium.getSelectedItem().toString();
-        String stdS= std.getSelectedItem().toString();
-        String mPasswordFieldS = mPasswordField.getText().toString();
-        if(mPasswordFieldS.length()<6)
-        {
-            mPasswordField.setError("Please set valid password");
-            mPasswordField.setText("");
-        }
-      //  ImageView studentImage=(ImageView);
-
-
-
-       /* studentImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showImageChooser();
-            }
-        });*/
+        mAuth = FirebaseAuth.getInstance();
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -145,154 +102,93 @@ public class RegActivity extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 if(!validateEmail()|!validatePassword() | !validateMobno() | !validatename() | !validateschool() | !validateparent() | !validateaddress() | !validateoccupation() | !validateterms())
                 {
                     return;
                 }
-               else {
-                    createAccount(mEmailField.getText().toString(), mPasswordField.getText().toString());
-
-                    database = FirebaseDatabase.getInstance();
-                    reference = database.getReference("Users");
-                    String nameS = name.getText().toString();
-                    String schoolS = school.getText().toString();
-
-                    String parentS = parent.getText().toString();
-
-
-                    String occParentS = occParent.getText().toString();
-
-                    String addressS = address.getText().toString();
-
-                    String mobNoS = mobNo.getText().toString();
-
-
-                    String mEmailFieldS = mEmailField.getText().toString();
-
-                    
-
-                    String boardS = board.getSelectedItem().toString();
-                    String mediumS = medium.getSelectedItem().toString();
-                    String stdS = std.getSelectedItem().toString();
-                    String mPasswordFieldS = mPasswordField.getText().toString();
-                    Info info = new Info(nameS, schoolS, parentS, occParentS, addressS, mobNoS, mEmailFieldS, mPasswordFieldS, boardS, mediumS, stdS);
-                    reference.child(nameS).setValue(info);
-                    saveUserInformation();
-                    Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(i);
-                }
+                createAccount(mEmailField.getText().toString(), mPasswordField.getText().toString());
             }
 
-            private boolean validateterms() {
-
-                if(!checkBox2.isChecked()){
-                    Toast.makeText(RegActivity.this, "Please check the terms and conditions", Toast.LENGTH_SHORT).show();
-                    return false;
-
-                }
-                return true;
-
-
-            }
-
-            private boolean validateoccupation() {
-
-                String occParentS = occParent.getText().toString();
-
-
-                if(occParentS.equals("")){
-                    occParent.setError("Please Enter valid address");
-                    return false;
-                }
-                return true;
-            }
-
-            private boolean validateaddress() {
-
-                String addressS = address.getText().toString();
-                if(addressS.equals("")){
-                    address.setError("Please Enter valid address");
-                    return false;
-                }
-                return true;
-            }
-
-            private boolean validateparent() {
-
-                String parentS = parent.getText().toString();
-                if(parentS.equals("")){
-                    parent.setError("Please Enter valid parent name");
-                    return false;
-                }
-                return true;
-            }
-
-            private boolean validateschool() {
-
-                String schoolS = school.getText().toString();
-                if(schoolS.equals("")){
-                    school.setError("Please Enter valid school name");
-                    return false;
-                }
-                return true;
-            }
-
-            private boolean validatename() {
-
-                String nameS = name.getText().toString();
-
-                if(nameS.equals("")){
-                    name.setError("Please Enter valid name");
-                    return false;
-                }
-                return true;
-
-            }
-
-            private boolean validateMobno() {
-                String mobNoS = mobNo.getText().toString();
-                if(mobNoS.length()!=10){
-                    mobNo.setError("Please Enter 10-digit valid mobile no");
-
-                    return false;
-                }
-                return true;
-
-            }
-
-            private boolean validatePassword() {
-                String mPasswordFieldS = mPasswordField.getText().toString();
-                if(mPasswordFieldS.length()<6)
-                {
-                    mPasswordField.setError("Please set valid password");
-
-                    return false;
-                }
-                return true;
-            }
-
-            private boolean validateEmail() {
-
-
-                String mEmailFieldS = mEmailField.getText().toString();
-
-                if(mEmailFieldS.isEmpty()){
-                    mEmailField.setError("Please Enter valid email address");
-                    return false;
-                }else{
-                    if(!Patterns.EMAIL_ADDRESS.matcher(mEmailFieldS).matches()){
-                        mEmailField.setError("Please Enter valid email address");
-
-                        return false;
-                    }
-                }
-                return true;
-            }
         });
-
     }
 
+    private boolean validateterms() {
+        if(!checkBox2.isChecked()){
+            Toast.makeText(RegActivity.this, "Please check the terms and conditions", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
+    private boolean validateoccupation() {
+        String occParentS = occParent.getText().toString();
+        if(occParentS.equals("")){
+            occParent.setError("Please Enter valid address");
+            return false;
+        }
+        return true;
+    }
+    private boolean validateaddress() {
+        String addressS = address.getText().toString();
+        if(addressS.equals("")){
+            address.setError("Please Enter valid address");
+            return false;
+        }
+        return true;
+    }
+    private boolean validateparent() {
+        String parentS = parent.getText().toString();
+        if(parentS.equals("")){
+            parent.setError("Please Enter valid parent name");
+            return false;
+        }
+        return true;
+    }
+    private boolean validateschool() {
+        String schoolS = school.getText().toString();
+        if(schoolS.equals("")){
+            school.setError("Please Enter valid school name");
+            return false;
+        }
+        return true;
+    }
+    private boolean validatename() {
+        String nameS = name.getText().toString();
+        if(nameS.equals("")){
+            name.setError("Please Enter valid name");
+            return false;
+        }
+        return true;
+    }
+    private boolean validateMobno() {
+        String mobNoS = mobNo.getText().toString();
+        if(mobNoS.length()!=10){
+            mobNo.setError("Please Enter 10-digit valid mobile no");
+            return false;
+        }
+        return true;
+    }
+    private boolean validatePassword() {
+        String mPasswordFieldS = mPasswordField.getText().toString();
+        if(mPasswordFieldS.length()<6)
+        {
+            mPasswordField.setError("Please set valid password");
+            return false;
+        }
+        return true;
+    }
+    private boolean validateEmail() {
+        String mEmailFieldS = mEmailField.getText().toString();
+        if(mEmailFieldS.isEmpty()){
+            mEmailField.setError("Please Enter valid email address");
+            return false;
+        }else{
+            if(!Patterns.EMAIL_ADDRESS.matcher(mEmailFieldS).matches()){
+                mEmailField.setError("Please Enter valid email address");
+                return false;
+            }
+        }
+        return true;
+    }
     private void createAccount(String email, String password) {
         Log.d(TAG, "createAccount:" + email);
         // [START create_user_with_email]
@@ -300,18 +196,45 @@ public class RegActivity extends AppCompatActivity {
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+
                         if (task.isSuccessful()) {
-                            FirebaseUser user = mAuth.getCurrentUser();
+                               // saveUserInformation();
+                                FirebaseUser user = mAuth.getCurrentUser();
+                                Toast.makeText(getApplicationContext(), "Account Succesfully Created",
+                                        Toast.LENGTH_SHORT).show();
+                                database = FirebaseDatabase.getInstance();
+                                reference = database.getReference();
+                                String nameS = name.getText().toString();
+                                String schoolS = school.getText().toString();
+                                String parentS = parent.getText().toString();
+                                String occParentS = occParent.getText().toString();
+                                String addressS = address.getText().toString();
+                                String mobNoS = mobNo.getText().toString();
+                                String mEmailFieldS = mEmailField.getText().toString();
+                                String boardS = board.getSelectedItem().toString();
+                                String mediumS = medium.getSelectedItem().toString();
+                                String stdS = std.getSelectedItem().toString();
+                                String mPasswordFieldS = mPasswordField.getText().toString();
+                                Info info = new Info(nameS, schoolS, parentS, occParentS, addressS, mobNoS, mEmailFieldS, mPasswordFieldS, boardS, mediumS, stdS);
+                                reference.child("Users").child(nameS).setValue(info);
+                                reference.child("Mapp").child(user.getUid()).setValue(nameS);
+                                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                                startActivity(i);
+
+
                         } else {
-                            Toast.makeText(getApplicationContext(), "Authentication failed.",
+                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                            Toast.makeText(getApplicationContext(), "Authentication failed."+task.getException(),
                                     Toast.LENGTH_SHORT).show();
                         }
+
+
                     }
+
                 });
         // [END create_user_with_email]
 
     }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -319,25 +242,19 @@ public class RegActivity extends AppCompatActivity {
         if(requestCode==CHOOSE_IMAGE&&resultCode==RESULT_OK&&data!=null&&data.getData()!=null)
         {
             uriProfileImage=data.getData();
-
             try {
                /* Bitmap bitmap= MediaStore.Images.Media.getBitmap(getContentResolver(),uriProfileImage);*/
-
                 ImageDecoder.Source source=ImageDecoder.createSource(this.getContentResolver(),uriProfileImage);
                 Bitmap bitmap=ImageDecoder.decodeBitmap(source);
                 studentImage.setImageBitmap(bitmap);
-
                 uploadImageToFirebaseStorage();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
         }
     }
-
     private void uploadImageToFirebaseStorage(){
         StorageReference profileImageRef= FirebaseStorage.getInstance().getReference("profilepics/"+System.currentTimeMillis()+".jpg");
-
         if(uriProfileImage!=null)
         {
             profileImageRef.putFile(uriProfileImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -355,26 +272,21 @@ public class RegActivity extends AppCompatActivity {
             });
         }
     }
-
     private void showImageChooser(){
         Intent intent= new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent,"Select profile image"),CHOOSE_IMAGE);
     }
-
     private void saveUserInformation()
     {
         String displayName = name.getText().toString();
-
         if(displayName.isEmpty()){
             name.setError("Name Required");
             name.requestFocus();
             return;
         }
-
         FirebaseUser user=mAuth.getCurrentUser();
-
         if(user!=null && profileImageurl!=null)
         {
             UserProfileChangeRequest profile = new UserProfileChangeRequest.Builder()

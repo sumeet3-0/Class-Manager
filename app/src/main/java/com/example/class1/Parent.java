@@ -3,6 +3,7 @@ package com.example.class1;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -35,15 +36,15 @@ public class Parent extends AppCompatActivity {
         feesCV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),AdminMarks1.class);
-                startActivity(i);
+                Toast.makeText(getApplicationContext(), "Under Development!!",
+                        Toast.LENGTH_SHORT).show();
             }
         });
         notificationsCV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),ViewList.class);
-                startActivity(i);
+                Toast.makeText(getApplicationContext(), "Under Development!!",
+                        Toast.LENGTH_SHORT).show();
             }
         });
     }
