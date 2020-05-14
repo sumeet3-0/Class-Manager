@@ -19,8 +19,8 @@ public class Admin extends AppCompatActivity {
         marksCV = findViewById(R.id.marksCV);
         feesCV = findViewById(R.id.feesCV);
         viewCV = findViewById(R.id.viewCV);
-        notiCV = findViewById(R.id.viewCV);
-        reqCV = findViewById(R.id.viewCV);
+        notiCV = findViewById(R.id.notiCV);
+        reqCV = findViewById(R.id.reqCV);
         attendenceCV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,8 +45,8 @@ public class Admin extends AppCompatActivity {
         viewCV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Under Development!!",
-                        Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getApplicationContext(),ViewList.class);
+                startActivity(i);
             }
 
         });
