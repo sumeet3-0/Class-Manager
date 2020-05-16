@@ -176,7 +176,7 @@ public class UpdateMarks extends AppCompatActivity implements DatePickerDialog.O
         if(month<10) e2="0";
         if(dayOfMonth<10) e1="0";
         String a = ":";
-        String s = e1+Integer.toString(dayOfMonth)+a+e2+Integer.toString(month)+a+Integer.toString(year);
+        String s = e1+Integer.toString(dayOfMonth)+a+e2+Integer.toString(month+1)+a+Integer.toString(year);
         date.setText("Recording Test Scores for :- "+s);
         Date=s;
     }

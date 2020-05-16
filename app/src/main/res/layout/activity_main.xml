@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#CB49E1"
+    android:background="@drawable/app_theme2"
     android:foregroundTint="#00BCD4"
     tools:context=".MainActivity">
 
@@ -17,8 +17,12 @@
         android:ems="10"
         android:hint="@string/username"
         android:inputType="textEmailAddress"
+        android:outlineAmbientShadowColor="#FFFFFF"
+        android:outlineSpotShadowColor="#FFFFFF"
+        android:shadowColor="#FFFFFF"
         android:textColor="#FFFFFF"
-        android:textColorHint="#353333"
+        android:textColorHighlight="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         android:textColorLink="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/password"
         app:layout_constraintStart_toStartOf="parent" />
@@ -31,7 +35,13 @@
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword"
-        android:textColorHint="#353333"
+        android:outlineAmbientShadowColor="#FFFFFF"
+        android:outlineSpotShadowColor="#FFFFFF"
+        android:shadowColor="#FFFFFF"
+        android:textColor="#FFFFFF"
+        android:textColorHighlight="#FFFFFF"
+        android:textColorHint="#F8F5F5"
+        android:textColorLink="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/checkBox"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -39,10 +49,12 @@
         android:id="@+id/parent"
         android:layout_width="100dp"
         android:layout_height="51dp"
-        android:layout_marginEnd="52dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginBottom="132dp"
-        android:backgroundTint="#5517C3"
+
+        android:background="@drawable/round_button"
         android:text="@string/parent"
+        android:textColor="#3F51B5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/teacher"
         app:layout_constraintHorizontal_bias="1.0"
@@ -52,10 +64,12 @@
         android:id="@+id/teacher"
         android:layout_width="109dp"
         android:layout_height="52dp"
-        android:layout_marginEnd="80dp"
+        android:layout_marginEnd="50dp"
         android:layout_marginBottom="132dp"
-        android:backgroundTint="#5517C3"
+
+        android:background="@drawable/round_button"
         android:text="@string/teacher"
+        android:textColor="#3F51B5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -65,6 +79,7 @@
         android:layout_height="0dp"
         android:layout_marginBottom="200dp"
         android:text="@string/keep_me_logged_in"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.601"
@@ -77,9 +92,9 @@
         android:layout_marginBottom="24dp"
         android:contextClickable="true"
         android:text="@string/register_here"
-        android:textColor="#142EBD"
-        android:textColorHint="#3F51B5"
-        android:textColorLink="#3F51B5"
+        android:textColor="#FCFCFD"
+        android:textColorHint="#FAFAFB"
+        android:textColorLink="#F5F6F8"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -88,8 +103,8 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="259dp"
-        android:layout_height="130dp"
+        android:layout_width="308dp"
+        android:layout_height="215dp"
 
         android:layout_marginBottom="32dp"
         app:layout_constraintBottom_toTopOf="@+id/email"

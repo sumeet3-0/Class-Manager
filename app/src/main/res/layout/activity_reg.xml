@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegActivity">
+    tools:context=".RegActivity"
+    android:background="@drawable/app_theme2">
 
     <ScrollView
         android:layout_width="409dp"
@@ -16,7 +17,9 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:outlineAmbientShadowColor="#FFFFFF"
+            android:outlineSpotShadowColor="#FFFFFF">
 
             <EditText
                 android:id="@+id/name"
@@ -25,16 +28,20 @@
                 android:layout_marginStart="50dp"
                 android:layout_marginTop="420dp"
                 android:freezesText="true"
-                android:hint="@string/full_name" />
+                android:hint="@string/full_name"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF" />
 
             <Button
                 android:id="@+id/save"
-                android:layout_width="wrap_content"
+                android:layout_width="119dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="135dp"
+                android:layout_marginLeft="140dp"
                 android:layout_marginTop="340dp"
-
-                android:text="Choose Image" />
+                android:background="@drawable/round_button"
+                android:text="Choose Image"
+                android:textColor="#3F51B5"
+                android:textSize="14sp" />
 
             <EditText
                 android:id="@+id/school"
@@ -42,17 +49,22 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="50dp"
                 android:layout_marginTop="500dp"
+                android:freezesText="true"
                 android:hint="@string/school"
-                android:freezesText="true"/>
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF" />
+
             <EditText
                 android:id="@+id/parent"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="50dp"
                 android:layout_marginTop="580dp"
-                android:hint="@string/name_of_parent"
                 android:freezesText="true"
-                />
+                android:hint="@string/name_of_parent"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF" />
+
             <EditText
                 android:id="@+id/occParent"
                 android:layout_width="300dp"
@@ -60,7 +72,10 @@
                 android:layout_marginStart="50dp"
                 android:layout_marginTop="660dp"
                 android:freezesText="true"
-                android:hint="@string/occupation_of_parent"/>
+                android:hint="@string/occupation_of_parent"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF" />
+
             <EditText
                 android:id="@+id/address"
                 android:layout_width="300dp"
@@ -68,7 +83,9 @@
                 android:layout_marginStart="50dp"
                 android:layout_marginTop="740dp"
                 android:freezesText="true"
-                android:hint="@string/Address"/>
+                android:hint="@string/Address"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF" />
 
             <TextView
                 android:id="@+id/textView"
@@ -80,8 +97,8 @@
                 android:contextClickable="false"
                 android:elegantTextHeight="false"
                 android:text="  Registration Form"
-                android:textColor="#3F51B5"
-                android:textColorHint="#500FC3"
+                android:textColor="#F8F8FA"
+                android:textColorHint="#F8F7FA"
                 android:textSize="36sp"
                 android:textStyle="bold" />
 
@@ -101,9 +118,11 @@
                 android:layout_marginStart="50dp"
                 android:layout_marginTop="820dp"
                 android:ems="10"
-                android:inputType="number"
                 android:freezesText="true"
-                android:hint="@string/whats_app_no"/>
+                android:hint="@string/whats_app_no"
+                android:inputType="number"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF" />
 
 
             <EditText
@@ -114,7 +133,8 @@
                 android:layout_marginTop="900dp"
                 android:ems="10"
                 android:hint="@string/email"
-                 />
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF" />
 
             <EditText
                 android:id="@+id/password"
@@ -124,7 +144,11 @@
                 android:layout_marginTop="980dp"
                 android:ems="10"
                 android:hint="Set password"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF"
+
+                />
 
             <Spinner
                 android:id="@+id/std"
@@ -133,6 +157,8 @@
                 android:layout_marginStart="50dp"
                 android:layout_marginTop="1220dp"
                 android:entries="@array/std"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF"
                 android:visibility="visible" />
 
             <TextView
@@ -140,7 +166,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="50dp"
                 android:layout_marginTop="1270dp"
-                android:text="Please tick the below checkbox before submitting form"/>
+                android:text="Please tick the below checkbox\n before submitting form"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF" />
 
             <Spinner
                 android:id="@+id/board"
@@ -148,7 +176,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="50dp"
                 android:layout_marginTop="1080dp"
-                android:entries="@array/Board" />
+                android:entries="@array/Board"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF" />
 
             <Spinner
                 android:id="@+id/medium"
@@ -156,41 +186,52 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="50dp"
                 android:layout_marginTop="1150dp"
-                android:entries="@array/Medium" />
+                android:entries="@array/Medium"
+                android:outlineAmbientShadowColor="#FFFFFF"
+                android:outlineSpotShadowColor="#FFFFFF"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF" />
+
             <ProgressBar
                 android:id="@+id/progressBar"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                />
+                android:layout_height="38dp"
+                android:outlineAmbientShadowColor="#FFFFFF" />
 
             <CheckBox
                 android:id="@+id/checkBox2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="50dp"
-                android:layout_marginTop="1298dp"
+                android:layout_marginTop="1309dp"
                 android:freezesText="true"
-                android:text="@string/i_agree_to" />
+                android:text="@string/i_agree_to"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF"/>
 
             <TextView
                 android:id="@+id/rules"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="147dp"
-                android:layout_marginTop="1305dp"
-                android:text="@string/terms_and_conditions"
-                android:textColor="#203FEC"
+                android:layout_marginTop="1316dp"
                 android:freezesText="true"
-                android:textColorHint="#2843DA" />
+                android:text="@string/terms_and_conditions"
+
+                android:textColor="#031785"
+                android:textColorHint="#FFFFFF"/>
 
             <Button
                 android:id="@+id/submit"
-                android:layout_width="wrap_content"
+                android:layout_width="113dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="147dp"
                 android:layout_marginTop="1360dp"
                 android:layout_marginBottom="80dp"
-                android:text="@string/submit_form" />
+                android:background="@drawable/round_button"
+                android:text="@string/submit_form"
+                android:textColor="#3F51B5"
+                android:textColorHint="#FFFFFF" />
 
             <TextView
                 android:id="@+id/textView2"
@@ -199,7 +240,9 @@
                 android:layout_marginStart="50dp"
                 android:layout_marginTop="1030dp"
                 android:ems="10"
-                android:text="Password should contain minimum 6 characters" />
+                android:text="Password should contain minimum 6 characters"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF"/>
 
 
         </RelativeLayout>

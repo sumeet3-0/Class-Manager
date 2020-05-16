@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/app_theme2"
     tools:context=".AdminMarks1">
 
     <TextView
@@ -14,7 +15,7 @@
         android:gravity="center_horizontal"
         android:text="Marks"
         android:textAllCaps="true"
-        android:textColor="#090808"
+        android:textColor="#FFFFFF"
         android:textSize="40sp" />
 
     <Button
@@ -26,18 +27,20 @@
         android:layout_marginRight="20dp"
         android:text="Update Marks"
         android:textSize="30sp"
-        android:textStyle="normal" />
+        android:textStyle="normal"
+        android:background = "@drawable/round_button"/>
 
     <Button
         android:id="@+id/viewAByName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="320dp"
         android:layout_marginRight="20dp"
         android:text="View Marks by Name"
         android:textSize="30sp"
-        android:textStyle="normal" />
+        android:textStyle="normal"
+        android:background = "@drawable/round_button"/>
 
     <Button
         android:id="@+id/viewAByDate"
@@ -48,6 +51,7 @@
         android:layout_marginRight="20dp"
         android:text="View Marks by date"
         android:textSize="30sp"
-        android:textStyle="normal" />
+        android:textStyle="normal"
+        android:background = "@drawable/round_button"/>
 
 </RelativeLayout>
