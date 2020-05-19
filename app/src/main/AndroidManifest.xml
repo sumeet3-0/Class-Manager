@@ -6,8 +6,11 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.CAMERA"/>
-        <uses-feature android:name="android.hardware.camera" android:required="false"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
 
     <application
         android:allowBackup="true"
@@ -16,7 +19,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ParentMarks1"></activity>
+        <activity android:name=".ViewN"></activity>
+        <activity android:name=".UpdateNotification" />
+        <activity android:name=".NotificationAdmin1" />
+        <activity android:name=".ParentMarks1" />
         <activity android:name=".ParentAttendence1" />
         <activity android:name=".Parent" />
         <activity android:name=".Fees" />
@@ -25,7 +31,7 @@
         <activity android:name=".ViewMByDate" />
         <activity android:name=".UpdateMarks" />
         <activity android:name=".AdminMarks1" />
-        <activity android:name=".SplashScreen" >
+        <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -33,17 +39,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".ViewAByDate" />
-
         <activity android:name=".ViewAByName" />
-
         <activity android:name=".UpdateAttendence" />
         <activity android:name=".AdminAttendence1" />
         <activity android:name=".Admin" />
         <activity android:name=".TermsConditions" />
         <activity android:name=".RegActivity" />
-        <activity android:name=".MainActivity">
-
-        </activity>
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

@@ -42,9 +42,9 @@ dependencies {
 repositories {
     mavenCentral()
 }
-allprojects{
+allprojects {
     tasks.withType(JavaCompile)
             {
-                options.compilerArgs<<"-Xlint";
+                options.compilerArgs << "-Xlint";
             }
 }
