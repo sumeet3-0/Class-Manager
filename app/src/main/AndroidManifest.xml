@@ -46,6 +46,8 @@
         <activity android:name=".TermsConditions" />
         <activity android:name=".RegActivity" />
         <activity android:name=".MainActivity" />
+        <activity android:name=".ParentFees"/>
+        <activity android:name=".PayFees"/>
     </application>
 
 </manifest>

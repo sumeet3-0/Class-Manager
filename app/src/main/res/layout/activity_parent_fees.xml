@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/app_theme2"
+    tools:context=".ParentFees">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:fontFamily="serif"
+        android:gravity="center_horizontal"
+        android:text="Fees"
+        android:textAllCaps="true"
+        android:textColor="#FBF9F9"
+        android:textSize="50sp" />
+
+    <Button
+        android:id="@+id/payFees"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginRight="20dp"
+        android:text="Pay Fees"
+        android:textColor="#3F51B5"
+        android:textSize="30sp"
+        android:textStyle="normal"
+        android:padding="15dp"
+        android:background = "@drawable/round_button"/>
+
+</RelativeLayout>

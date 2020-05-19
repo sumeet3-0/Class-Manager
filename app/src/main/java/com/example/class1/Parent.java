@@ -36,8 +36,11 @@ public class Parent extends AppCompatActivity {
         feesCV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Under Development!!",
-                        Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getApplicationContext(),ParentFees.class);
+                startActivity(i);
+
+                /*Toast.makeText(getApplicationContext(), "Under Development!!",
+                        Toast.LENGTH_SHORT).show();*/
             }
         });
         notificationsCV.setOnClickListener(new View.OnClickListener() {
