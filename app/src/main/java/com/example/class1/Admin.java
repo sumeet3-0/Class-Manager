@@ -56,13 +56,12 @@ public class Admin extends AppCompatActivity {
                 Intent i = new Intent(getApplicationContext(),NotificationAdmin1.class);
                 startActivity(i);
             }
-
         });
         reqCV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Under Development!!",
-                        Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getApplicationContext(),Discussion.class);
+                startActivity(i);
             }
 
         });

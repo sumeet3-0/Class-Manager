@@ -4,12 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewN"
+    tools:context=".ParentNotification"
     android:background="@drawable/app_theme2">
 
     <ListView
         android:id="@+id/List"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
+        android:layout_height="wrap_content" />
 </RelativeLayout>

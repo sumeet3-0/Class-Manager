@@ -19,7 +19,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ViewN"></activity>
+        <activity android:name=".Discussion"></activity>
+        <activity android:name=".ParentNotification" />
+        <activity android:name=".ViewN" />
         <activity android:name=".UpdateNotification" />
         <activity android:name=".NotificationAdmin1" />
         <activity android:name=".ParentMarks1" />
@@ -46,8 +48,8 @@
         <activity android:name=".TermsConditions" />
         <activity android:name=".RegActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".ParentFees"/>
-        <activity android:name=".PayFees"/>
+        <activity android:name=".ParentFees" />
+        <activity android:name=".PayFees" />
     </application>
 
 </manifest>

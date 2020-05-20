@@ -17,9 +17,9 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class ViewN extends AppCompatActivity {
+public class ParentNotification extends AppCompatActivity {
 
-    ArrayAdapter<String> arrayAdapter;
+    ArrayAdapter arrayAdapter;
     FirebaseDatabase database;
     DatabaseReference reference;
     ArrayList<String> usersList = new ArrayList<String>();
@@ -27,7 +27,7 @@ public class ViewN extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_n);
+        setContentView(R.layout.activity_parent_notification);
         database = FirebaseDatabase.getInstance();
         reference = database.getReference();
         List = findViewById(R.id.List);
@@ -40,7 +40,7 @@ public class ViewN extends AppCompatActivity {
                 }
                 Collections.reverse(usersList);
                 arrayAdapter =
-                        new ArrayAdapter<>(ViewN.this, android.R.layout.simple_list_item_1, usersList);
+                        new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, usersList);
                 List.setAdapter(arrayAdapter);
             }
             @Override
