@@ -127,4 +127,9 @@
         <item>Semi-English</item>
         <item>English</item>
     </string-array>
+    <string-array name="batch">
+        <item>Vishrambag</item>
+        <item>College Corner</item>
+    </string-array>
+
 </resources>

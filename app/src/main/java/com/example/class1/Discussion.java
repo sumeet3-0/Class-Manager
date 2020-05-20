@@ -21,7 +21,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 
 public class Discussion extends AppCompatActivity {
@@ -48,6 +47,7 @@ public class Discussion extends AppCompatActivity {
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                user = mAuth.getCurrentUser();
                 reference.child("Mapp").child(user.getUid()).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -67,10 +67,21 @@ public class Discussion extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                    String s = postSnapshot.getValue().toString();
-                    usersList.add(s);
+                    String s = postSnapshot.getValue().toString(),userName="" , message="";
+                    char eq='=',end='}',open='{';
+                    int i = -1;
+                    while(s.charAt(++i)!=eq)
+                    {
+                        if(s.charAt(i) == open)
+                            continue;
+                        userName += s.charAt(i);
+                    }
+                    while(s.charAt(++i)!=end)
+                    {
+                        message += s.charAt(i);
+                    }
+                    usersList.add(userName.toUpperCase()+": "+message);
                 }
-                Collections.reverse(usersList);
                 arrayAdapter =
                         new ArrayAdapter<>(Discussion.this, android.R.layout.simple_list_item_1, usersList);
                 List.setAdapter(arrayAdapter);

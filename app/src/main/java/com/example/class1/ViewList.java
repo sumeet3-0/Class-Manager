@@ -23,6 +23,7 @@ public class ViewList extends AppCompatActivity {
     ArrayAdapter arrayAdapter;
     FirebaseDatabase database;
     DatabaseReference reference;
+    ArrayList<String> batchList = new ArrayList<String>();
     ArrayList<String> usersList = new ArrayList<String>();
     ArrayList<String> recordList = new ArrayList<String>();
     ListView List;
@@ -33,6 +34,8 @@ public class ViewList extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         reference = database.getReference();
         List = findViewById(R.id.List);
+
+
         List.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

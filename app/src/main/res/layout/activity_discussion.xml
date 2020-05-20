@@ -7,14 +7,24 @@
     android:orientation="vertical"
     tools:context=".Discussion"
     android:background="@drawable/app_theme2">
+    <ListView
+        android:id="@+id/List"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.0"
+        android:transcriptMode="alwaysScroll"
+        android:stackFromBottom="true"
+        android:layout_gravity="top"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
         android:orientation="horizontal">
         <EditText
             android:id="@+id/chat"
-            android:layout_width="300dp"
-            android:layout_height="65dp"/>
+            android:layout_width="250dp"
+            android:layout_height="65dp"
+            android:layout_gravity="left"/>
 
         <Button
             android:id="@+id/send"
@@ -22,13 +32,9 @@
             android:layout_height="65dp"
             android:text="SEND"
             android:textSize="20sp"
+            android:layout_gravity="right"
             tools:ignore="RtlSymmetry" />
     </LinearLayout>
-    <ListView
-        android:id="@+id/List"
-        android:layout_width="match_parent"
-        android:layout_height="600dp"
-        android:transcriptMode="alwaysScroll"
-        android:stackFromBottom="true"/>
+
 
 </LinearLayout>

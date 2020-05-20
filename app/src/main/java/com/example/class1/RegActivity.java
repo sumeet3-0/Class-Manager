@@ -48,7 +48,7 @@ public class RegActivity extends AppCompatActivity {
     ProgressBar progressBar;
     private static final String TAG = "EmailPassword";
     public EditText mEmailField,name,school,address,occParent,parent,mobNo;
-    public Spinner std,board,medium;
+    public Spinner std,board,medium,batch;
     private EditText mPasswordField;
      private FirebaseAuth mAuth;
      private ImageView studentImage;
@@ -85,6 +85,7 @@ public class RegActivity extends AppCompatActivity {
         studentImage=findViewById(R.id.studentImage);
         checkBox2=findViewById(R.id.checkBox2);
         mAuth = FirebaseAuth.getInstance();
+        batch=findViewById(R.id.batch);
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -213,9 +214,11 @@ public class RegActivity extends AppCompatActivity {
                                 String mEmailFieldS = mEmailField.getText().toString();
                                 String boardS = board.getSelectedItem().toString();
                                 String mediumS = medium.getSelectedItem().toString();
+                                String batchS = batch.getSelectedItem().toString();
                                 String stdS = std.getSelectedItem().toString();
                                 String mPasswordFieldS = mPasswordField.getText().toString();
-                                Info info = new Info(nameS, schoolS, parentS, occParentS, addressS, mobNoS, mEmailFieldS, mPasswordFieldS, boardS, mediumS, stdS);
+                                String Batch = stdS+" "+mediumS+" "+boardS+" "+batchS;
+                                Info info = new Info(nameS, schoolS, parentS, occParentS, addressS, mobNoS, mEmailFieldS, mPasswordFieldS, boardS, mediumS, stdS , batchS);
                                 reference.child("Users").child(nameS).setValue(info);
                                 reference.child("Mapp").child(user.getUid()).setValue(nameS);
                                 Intent i = new Intent(getApplicationContext(), MainActivity.class);

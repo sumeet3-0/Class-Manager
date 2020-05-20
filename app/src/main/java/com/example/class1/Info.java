@@ -1,7 +1,7 @@
 package com.example.class1;
 
 public class Info {
-    String name,school,parent,occParent,address,mobNo,email,password,board,medium,std;
+    String name,school,parent,occParent,address,mobNo,email,password,board,medium,std,batch;
 
     public Info() {
 
@@ -90,13 +90,16 @@ public class Info {
     public String getStd() {
         return std;
     }
+    public String batch() {
+        return batch;
+    }
 
 
     public void setStd(String std) {
         this.std = std;
     }
 
-    public Info(String name, String school, String parent, String occParent, String address, String mobNo, String email, String password, String board, String medium, String std) {
+    public Info(String name, String school, String parent, String occParent, String address, String mobNo, String email, String password, String board, String medium, String std,String batch) {
         this.name = name;
         this.school = school;
         this.parent = parent;
@@ -108,5 +111,6 @@ public class Info {
         this.board = board;
         this.medium = medium;
         this.std = std;
+        this.batch = batch;
     }
 }
