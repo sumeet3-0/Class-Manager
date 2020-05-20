@@ -1,5 +1,7 @@
 package com.example.class1;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -34,7 +36,43 @@ public class ViewList extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         reference = database.getReference();
         List = findViewById(R.id.List);
+        List.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                AlertDialog diaBox = AskOption(parent, view, position, id);
+                diaBox.show();
+                return false;
+            }
 
+            private AlertDialog AskOption(final AdapterView<?> parent, View view, final int position, long id)
+            {
+                AlertDialog myQuittingDialogBox = new AlertDialog.Builder(ViewList.this)
+                        // set message, title, and icon
+                        .setTitle("Delete")
+                        .setMessage("Do you want to Delete")
+                        .setIcon(R.drawable.delete)
+
+                        .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                                String s = (String) parent.getItemAtPosition(position);
+                                reference.child("Users").child(s).removeValue();
+                                dialog.dismiss();
+                            }
+
+                        })
+                        .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                dialog.dismiss();
+
+                            }
+                        })
+                        .create();
+
+                return myQuittingDialogBox;
+            }
+        });
 
         List.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
