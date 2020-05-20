@@ -169,14 +169,14 @@
             android:layout_height="30dp"
             android:layout_marginTop="120dp"
             android:gravity="center"
-            android:text="Requests"
+            android:text="Chat Room"
             android:textColor="#050505"
             android:textSize="24sp" />
 
         <ImageView
-            android:id="@+id/extraImg"
+            android:id="@+id/chat"
             android:layout_width="140dp"
             android:layout_height="120dp"
-            app:srcCompat="@drawable/req" />
+            app:srcCompat="@drawable/chat" />
     </androidx.cardview.widget.CardView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

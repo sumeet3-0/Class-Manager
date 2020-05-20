@@ -9,7 +9,7 @@ import androidx.cardview.widget.CardView;
 
 public class Parent extends AppCompatActivity {
 
-    CardView attendenceCV,marksCV,feesCV,notificationsCV;
+    CardView attendenceCV,marksCV,feesCV,notificationsCV,chatCV;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,6 +17,7 @@ public class Parent extends AppCompatActivity {
         attendenceCV = findViewById(R.id.attendenceCV);
         marksCV = findViewById(R.id.marksCV);
         feesCV = findViewById(R.id.feesCV);
+        chatCV = findViewById(R.id.chatCV);
         notificationsCV = findViewById(R.id.viewCV);
         attendenceCV.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,6 +44,13 @@ public class Parent extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(),ParentNotification.class);
+                startActivity(i);
+            }
+        });
+        chatCV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),Discussion.class);
                 startActivity(i);
             }
         });

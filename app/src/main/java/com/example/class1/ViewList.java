@@ -47,7 +47,6 @@ public class ViewList extends AppCompatActivity {
             private AlertDialog AskOption(final AdapterView<?> parent, View view, final int position, long id)
             {
                 AlertDialog myQuittingDialogBox = new AlertDialog.Builder(ViewList.this)
-                        // set message, title, and icon
                         .setTitle("Delete")
                         .setMessage("Do you want to Delete")
                         .setIcon(R.drawable.delete)
