@@ -55,6 +55,7 @@ public class Discussion extends AppCompatActivity {
                         SimpleDateFormat s = new SimpleDateFormat("dd:MM:yyyy hh:mm:ss");
                         String format = s.format(new Date());
                         reference.child("Chats").child(format).child(userName).setValue(chatBox.getText().toString());
+                        chatBox.setText("");
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -66,6 +67,7 @@ public class Discussion extends AppCompatActivity {
         reference.child("Chats").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                usersList.clear();
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     String s = postSnapshot.getValue().toString(),userName="" , message="";
                     char eq='=',end='}',open='{';
@@ -83,7 +85,7 @@ public class Discussion extends AppCompatActivity {
                     usersList.add(userName.toUpperCase()+": "+message);
                 }
                 arrayAdapter =
-                        new ArrayAdapter<>(Discussion.this, android.R.layout.simple_list_item_1, usersList);
+                        new ArrayAdapter<>(Discussion.this, R.layout.customlist, usersList);
                 List.setAdapter(arrayAdapter);
             }
             @Override

@@ -28,7 +28,7 @@
             android:layout_marginTop="120dp"
             android:gravity="center"
             android:text="@string/attendence"
-            android:textColor="#050505"
+            android:textColor="#3F51B5"
             android:textSize="24sp" />
 
         <ImageView
@@ -57,7 +57,7 @@
             android:layout_marginTop="120dp"
             android:gravity="center"
             android:text="@string/marks"
-            android:textColor="#050505"
+            android:textColor="#3F51B5"
             android:textSize="24sp" />
 
         <ImageView
@@ -85,7 +85,7 @@
             android:layout_marginTop="120dp"
             android:gravity="center"
             android:text="@string/fees"
-            android:textColor="#050505"
+            android:textColor="#3F51B5"
             android:textSize="24sp" />
 
         <ImageView
@@ -113,14 +113,14 @@
             android:layout_marginTop="120dp"
             android:gravity="center"
             android:text="@string/notifications"
-            android:textColor="#050505"
+            android:textColor="#3F51B5"
             android:textSize="24sp" />
 
         <ImageView
             android:id="@+id/notiImg"
             android:layout_width="140dp"
             android:layout_height="120dp"
-            app:srcCompat="@drawable/ring" />
+            app:srcCompat="@drawable/bell" />
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
@@ -141,7 +141,7 @@
             android:layout_marginTop="120dp"
             android:gravity="center"
             android:text="View Students"
-            android:textColor="#050505"
+            android:textColor="#3F51B5"
             android:textSize="20sp" />
 
         <ImageView
@@ -170,7 +170,7 @@
             android:layout_marginTop="120dp"
             android:gravity="center"
             android:text="Chat Room"
-            android:textColor="#050505"
+            android:textColor="#3F51B5"
             android:textSize="24sp" />
 
         <ImageView

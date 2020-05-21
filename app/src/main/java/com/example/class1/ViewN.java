@@ -34,13 +34,14 @@ public class ViewN extends AppCompatActivity {
         reference.child("Notifications").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                usersList.clear();
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     String s = postSnapshot.getKey() + " : " + postSnapshot.getValue();
                     usersList.add(s);
                 }
                 Collections.reverse(usersList);
                 arrayAdapter =
-                        new ArrayAdapter<>(ViewN.this, android.R.layout.simple_list_item_1, usersList);
+                        new ArrayAdapter<>(ViewN.this, R.layout.customlist, usersList);
                 List.setAdapter(arrayAdapter);
             }
             @Override
