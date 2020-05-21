@@ -19,7 +19,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Discussion"></activity>
+        <activity android:name=".CreateBatch"></activity>
+        <activity android:name=".Batches" />
+        <activity android:name=".Discussion" />
         <activity android:name=".ParentNotification" />
         <activity android:name=".ViewN" />
         <activity android:name=".UpdateNotification" />

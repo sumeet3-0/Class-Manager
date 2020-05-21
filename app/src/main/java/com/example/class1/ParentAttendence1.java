@@ -27,7 +27,7 @@ public class ParentAttendence1 extends AppCompatActivity {
     FirebaseAuth mAuth;
     ArrayList<String> usersList = new ArrayList<String>();
     ListView List;
-    String userName;
+    String userName , batch;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,28 +36,38 @@ public class ParentAttendence1 extends AppCompatActivity {
         reference = database.getReference();
         List = findViewById(R.id.List);
         mAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = mAuth.getCurrentUser();
+        final FirebaseUser user = mAuth.getCurrentUser();
         reference.child("Mapp").child(user.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 userName = dataSnapshot.getValue().toString();
-                reference.child("Attendance By Name").child(userName).addValueEventListener(new ValueEventListener() {
+                reference.child("Batch").child(user.getUid()).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                            String s =postSnapshot.getValue()+" On "+postSnapshot.getKey();
-                            usersList.add(s);
-                        }
-                        arrayAdapter =
-                                new ArrayAdapter(ParentAttendence1.this, android.R.layout.simple_list_item_1, usersList);
-                        List.setAdapter(arrayAdapter);
+                        batch = dataSnapshot.getValue().toString();
+                        reference.child(batch).child("Attendance By Name").child(userName).addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                                    String s =postSnapshot.getValue()+" On "+postSnapshot.getKey();
+                                    usersList.add(s);
+                                }
+                                arrayAdapter =
+                                        new ArrayAdapter(ParentAttendence1.this, android.R.layout.simple_list_item_1, usersList);
+                                List.setAdapter(arrayAdapter);
+                            }
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+                                Log.w("unique", "loadPost:onCancelled", databaseError.toException());
+                            }
+                        });
+
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
                         Log.w("unique", "loadPost:onCancelled", databaseError.toException());
                     }
                 });
-
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {

@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -32,13 +33,17 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
@@ -48,10 +53,11 @@ public class RegActivity extends AppCompatActivity {
     ProgressBar progressBar;
     private static final String TAG = "EmailPassword";
     public EditText mEmailField,name,school,address,occParent,parent,mobNo;
-    public Spinner std,board,medium,batch;
+    public Spinner chooseBatch;
     private EditText mPasswordField;
      private FirebaseAuth mAuth;
      private ImageView studentImage;
+    ArrayList<String> batchList = new ArrayList<String>();
     private Button submit;
     private Button save;
     FirebaseDatabase database;
@@ -59,6 +65,7 @@ public class RegActivity extends AppCompatActivity {
     String profileImageurl;
     Uri uriProfileImage;
     CheckBox checkBox2;
+    ArrayAdapter arrayAdapter;
     public static final Pattern EMAIL_ADDRESS=Pattern.compile("[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}"+"\\@"+"[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}"+"(" + "\\." + "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}"+")+");
 
 
@@ -66,6 +73,8 @@ public class RegActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reg);
+        database=FirebaseDatabase.getInstance();
+        reference=database.getReference();
         mEmailField = findViewById(R.id.fieldEmail);
         mPasswordField = findViewById(R.id.password);
         mAuth = FirebaseAuth.getInstance();
@@ -77,15 +86,28 @@ public class RegActivity extends AppCompatActivity {
         address = findViewById(R.id.address);
         occParent = findViewById(R.id.occParent);
         parent = findViewById(R.id.parent);
-        std = findViewById(R.id.std);
-        board = findViewById(R.id.board);
-        medium = findViewById(R.id.medium);
+        chooseBatch = findViewById(R.id.chooseBatch);
         save=findViewById(R.id.save);
         progressBar=findViewById(R.id.progressBar);
         studentImage=findViewById(R.id.studentImage);
         checkBox2=findViewById(R.id.checkBox2);
         mAuth = FirebaseAuth.getInstance();
-        batch=findViewById(R.id.batch);
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    String s = postSnapshot.getKey();
+                    batchList.add(s);
+                }
+                arrayAdapter =
+                        new ArrayAdapter<>(RegActivity.this, android.R.layout.simple_spinner_dropdown_item, batchList);
+                chooseBatch.setAdapter(arrayAdapter);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.w("unique", "loadPost:onCancelled", databaseError.toException());
+            }
+        });
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -212,15 +234,12 @@ public class RegActivity extends AppCompatActivity {
                                 String addressS = address.getText().toString();
                                 String mobNoS = mobNo.getText().toString();
                                 String mEmailFieldS = mEmailField.getText().toString();
-                                String boardS = board.getSelectedItem().toString();
-                                String mediumS = medium.getSelectedItem().toString();
-                                String batchS = batch.getSelectedItem().toString();
-                                String stdS = std.getSelectedItem().toString();
+                                String batchS = chooseBatch.getSelectedItem().toString();
                                 String mPasswordFieldS = mPasswordField.getText().toString();
-                                String Batch = stdS+" "+mediumS+" "+boardS+" "+batchS;
-                                Info info = new Info(nameS, schoolS, parentS, occParentS, addressS, mobNoS, mEmailFieldS, mPasswordFieldS, boardS, mediumS, stdS , batchS);
-                                reference.child("Users").child(nameS).setValue(info);
+                                Info info = new Info(nameS, schoolS, parentS, occParentS, addressS, mobNoS, mEmailFieldS, mPasswordFieldS, batchS);
+                                reference.child(batchS).child("Users").child(nameS).setValue(info);
                                 reference.child("Mapp").child(user.getUid()).setValue(nameS);
+                                reference.child("Batch").child(user.getUid()).setValue(batchS);
                                 Intent i = new Intent(getApplicationContext(), MainActivity.class);
                                 startActivity(i);
 

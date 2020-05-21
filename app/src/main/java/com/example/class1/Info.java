@@ -1,7 +1,7 @@
 package com.example.class1;
 
 public class Info {
-    String name,school,parent,occParent,address,mobNo,email,password,board,medium,std,batch;
+    String name,school,parent,occParent,address,mobNo,email,password,batch;
 
     public Info() {
 
@@ -71,35 +71,16 @@ public class Info {
         this.password = password;
     }
 
-    public String getBoard() {
-        return board;
-    }
-
-    public void setBoard(String board) {
-        this.board = board;
-    }
-
-    public String getMedium() {
-        return medium;
-    }
-
-    public void setMedium(String medium) {
-        this.medium = medium;
-    }
-
-    public String getStd() {
-        return std;
-    }
-    public String batch() {
+    public String getBatch() {
         return batch;
     }
 
-
-    public void setStd(String std) {
-        this.std = std;
+    public void setBatch(String board) {
+        this.batch = batch;
     }
 
-    public Info(String name, String school, String parent, String occParent, String address, String mobNo, String email, String password, String board, String medium, String std,String batch) {
+
+    public Info(String name, String school, String parent, String occParent, String address, String mobNo, String email, String password, String batch) {
         this.name = name;
         this.school = school;
         this.parent = parent;
@@ -108,9 +89,6 @@ public class Info {
         this.mobNo = mobNo;
         this.email = email;
         this.password = password;
-        this.board = board;
-        this.medium = medium;
-        this.std = std;
         this.batch = batch;
     }
 }

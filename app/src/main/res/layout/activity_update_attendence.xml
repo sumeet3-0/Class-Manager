@@ -28,15 +28,24 @@
         android:textColor="#FFFFFF"
         android:textSize="35sp" />
 
+
     <Button
         android:id="@+id/chooseDate"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="190dp"
         android:background="@drawable/round_button"
         android:text="Choose Date"
         android:textSize="20dp" />
+
+    <Spinner
+        android:id="@+id/chooseBatch"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="190dp"
+        android:background="@drawable/round_button" />
 
 
     <RadioGroup

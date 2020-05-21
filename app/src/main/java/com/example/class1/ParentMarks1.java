@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,8 +24,8 @@ public class ParentMarks1 extends AppCompatActivity {
     DatabaseReference reference;
     FirebaseAuth mAuth;
     ArrayList<String> usersList = new ArrayList<String>();
-    String userName;
     ListView List;
+    String userName , batch;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,37 +35,43 @@ public class ParentMarks1 extends AppCompatActivity {
         reference = database.getReference();
         List = findViewById(R.id.List);
         mAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = mAuth.getCurrentUser();
-        //Toast.makeText(getApplicationContext(), user.getUid(),Toast.LENGTH_LONG).show();
-       reference.child("Mapp").child(user.getUid()).addValueEventListener(new ValueEventListener() {
+        final FirebaseUser user = mAuth.getCurrentUser();
+        reference.child("Mapp").child(user.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 userName = dataSnapshot.getValue().toString();
-                reference.child("Marks By Name").child(userName).addValueEventListener(new ValueEventListener() {
+                reference.child("Batch").child(user.getUid()).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                            String s =postSnapshot.getValue()+" On "+postSnapshot.getKey();
-                            usersList.add(s);
-                        }
-                        Log.w("unique", "Success");
-                        arrayAdapter =
-                                new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, usersList);
-                        List.setAdapter(arrayAdapter);
+                        batch = dataSnapshot.getValue().toString();
+                        reference.child(batch).child("Marks By Name").child(userName).addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                                    String s =postSnapshot.getValue()+" On "+postSnapshot.getKey();
+                                    usersList.add(s);
+                                }
+                                arrayAdapter =
+                                        new ArrayAdapter(ParentMarks1.this, android.R.layout.simple_list_item_1, usersList);
+                                List.setAdapter(arrayAdapter);
+                            }
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+                                Log.w("unique", "loadPost:onCancelled", databaseError.toException());
+                            }
+                        });
+
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
                         Log.w("unique", "loadPost:onCancelled", databaseError.toException());
                     }
                 });
-
-
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(getApplicationContext(), "Error",Toast.LENGTH_LONG).show();
+                Log.w("unique", "loadPost:onCancelled", databaseError.toException());
             }
         });
-
     }
 }

@@ -45,7 +45,7 @@ public class Admin extends AppCompatActivity {
         viewCV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),ViewList.class);
+                Intent i = new Intent(getApplicationContext(),Batches.class);
                 startActivity(i);
             }
 

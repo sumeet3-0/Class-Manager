@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,10 +26,13 @@ public class ViewList extends AppCompatActivity {
     ArrayAdapter arrayAdapter;
     FirebaseDatabase database;
     DatabaseReference reference;
+    Spinner chooseBatch ;
     ArrayList<String> batchList = new ArrayList<String>();
     ArrayList<String> usersList = new ArrayList<String>();
     ArrayList<String> recordList = new ArrayList<String>();
     ListView List;
+    String mediumS , b ="Batch" , m = "Mapp";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +40,55 @@ public class ViewList extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         reference = database.getReference();
         List = findViewById(R.id.List);
+        chooseBatch = findViewById(R.id.chooseBatch);
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    String s = postSnapshot.getKey();
+                    if(s.equals(b) | s.equals(m))
+                        continue;
+                    batchList.add(s);
+                }
+                arrayAdapter =
+                        new ArrayAdapter<>(ViewList.this,android.R.layout.simple_spinner_dropdown_item,batchList);
+                chooseBatch.setAdapter(arrayAdapter);
+
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.w("unique", "loadPost:onCancelled", databaseError.toException());
+            }
+        });
+        chooseBatch.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                mediumS = chooseBatch.getSelectedItem().toString();
+                reference.child(mediumS).child("Users").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        usersList.clear();
+                        for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                            String s = postSnapshot.getKey();
+                            usersList.add(s);
+                        }
+                        arrayAdapter =
+                                new ArrayAdapter(ViewList.this, android.R.layout.simple_list_item_1, usersList);
+                        List.setAdapter(arrayAdapter);
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        Log.w("unique", "loadPost:onCancelled", databaseError.toException());
+                    }
+                });
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
         List.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
@@ -77,7 +130,7 @@ public class ViewList extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String s = (String) parent.getItemAtPosition(position);
-                reference.child("Users").child(s).addValueEventListener(new ValueEventListener() {
+                reference.child(mediumS).child("Users").child(s).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
@@ -95,22 +148,7 @@ public class ViewList extends AppCompatActivity {
                 });
             }
         });
-        reference.child("Users").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                    String s = postSnapshot.getKey();
-                    usersList.add(s);
-                }
-                arrayAdapter =
-                        new ArrayAdapter(ViewList.this, android.R.layout.simple_list_item_1, usersList);
-                List.setAdapter(arrayAdapter);
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.w("unique", "loadPost:onCancelled", databaseError.toException());
-            }
-        });
+
 
     }
 }

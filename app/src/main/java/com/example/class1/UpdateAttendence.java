@@ -5,10 +5,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,13 +30,17 @@ import java.util.Calendar;
 public class UpdateAttendence extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
     ArrayList<String> usersList = new ArrayList<String>();
+    ArrayAdapter<String> arrayAdapter;
+    ArrayList<String> batchList = new ArrayList<String>();
     FirebaseDatabase database;
-    DatabaseReference reference,refByName,refByDate;
+    DatabaseReference reference;
     TextView box,date;
     RadioButton P , A ,selected;
     RadioGroup grp;
     Button next,prev,submit,chooseDate;
-    String Date;
+    String Date , s;
+    Spinner chooseBatch ;
+    String name , b ="Batch" , m = "Mapp";
     int i =0;
     boolean flag = false,dateSet=false;
     @Override
@@ -43,8 +50,6 @@ public class UpdateAttendence extends AppCompatActivity implements DatePickerDia
         box = findViewById(R.id.nameField);
         database = FirebaseDatabase.getInstance();
         reference = database.getReference();
-        refByName = database.getReference("Attendance By Name");
-        refByDate = database.getReference("Attendance By Date");
         A= findViewById(R.id.absentRadio);
         P= findViewById(R.id.presentRadio);
         next=findViewById(R.id.next);
@@ -52,6 +57,99 @@ public class UpdateAttendence extends AppCompatActivity implements DatePickerDia
         prev=findViewById(R.id.prev);
         chooseDate=findViewById(R.id.chooseDate);
         date=findViewById(R.id.date);
+        chooseBatch = findViewById(R.id.chooseBatch);
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    String s = postSnapshot.getKey();
+                    if (s.equals(b) | s.equals(m))
+                        continue;
+                    batchList.add(s);
+                }
+                arrayAdapter =
+                        new ArrayAdapter<>(UpdateAttendence.this, android.R.layout.simple_spinner_dropdown_item, batchList);
+                chooseBatch.setAdapter(arrayAdapter);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.w("unique", "loadPost:onCancelled", databaseError.toException());
+            }
+        });
+        chooseBatch.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            name = chooseBatch.getSelectedItem().toString();
+            reference.child(name).child("Users").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    usersList.clear();
+                    for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                        String s = postSnapshot.getKey();
+                        usersList.add(s);
+                    }
+                    box.setText(usersList.get(0));
+                    next.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            if(!dateSet)
+                            {
+                                Toast.makeText(getApplicationContext(),"Set the Date First",Toast.LENGTH_SHORT).show();
+                            }
+                            else
+                            if(i!=usersList.size()-1)
+                            {
+                                String s;
+                                if(A.isChecked()) s="ABSENT";
+                                else s="PRESENT";
+                                 reference.child(name).child("Attendance By Date").child(Date).child(box.getText().toString()).setValue(s);
+                                 reference.child(name).child("Attendance By Name").child(box.getText().toString()).child(Date).setValue(s);
+                                box.setText(usersList.get(++i));
+                            }
+                            else
+                            {
+                                flag=true;
+                                Toast.makeText(getApplicationContext(),"List Ended\nClick Submit Button!!!",Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+                    prev.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            if(!dateSet)
+                            {
+                                Toast.makeText(getApplicationContext(),"Set the Date First",Toast.LENGTH_SHORT).show();
+                            }
+                            else
+                            if(i!=0)
+                            {
+                                String s;
+                                if(A.isChecked()) s="ABSENT";
+                                else s="PRESENT";
+                                 reference.child(name).child("Attendance By Date").child(Date).child(box.getText().toString()).setValue(s);
+                                 reference.child(name).child("Attendance By Name").child(box.getText().toString()).child(Date).setValue(s);
+                                box.setText(usersList.get(--i));
+                            }
+                            else
+                            {
+                                Toast.makeText(getApplicationContext(),"List Ended",Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+                }
+
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    Log.w("unique", "loadPost:onCancelled", databaseError.toException());
+                }
+            });
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
         findViewById(R.id.chooseDate).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,8 +170,8 @@ public class UpdateAttendence extends AppCompatActivity implements DatePickerDia
                     String s;
                     if(A.isChecked()) s="ABSENT";
                     else s="PRESENT";
-                    refByDate.child(Date).child(box.getText().toString()).setValue(s);
-                    refByName.child(box.getText().toString()).child(Date).setValue(s);
+                     reference.child(name).child("Attendance By Date").child(Date).child(box.getText().toString()).setValue(s);
+                     reference.child(name).child("Attendance By Name").child(box.getText().toString()).child(Date).setValue(s);
                     box.setText(usersList.get(usersList.size()-1));
                     Toast.makeText(getApplicationContext(),"Recorded Succesfully!!!",Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(getApplicationContext(),AdminAttendence1.class);
@@ -83,70 +181,6 @@ public class UpdateAttendence extends AppCompatActivity implements DatePickerDia
                 {
                     Toast.makeText(getApplicationContext(),"Enter Attendance for all Students First!!!",Toast.LENGTH_SHORT).show();
                 }
-            }
-        });
-
-        reference.child("Users").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                    String s = postSnapshot.getKey();
-                     usersList.add(s);
-                }
-                box.setText(usersList.get(0));
-                next.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if(!dateSet)
-                        {
-                            Toast.makeText(getApplicationContext(),"Set the Date First",Toast.LENGTH_SHORT).show();
-                        }
-                        else
-                        if(i!=usersList.size()-1)
-                        {
-                            String s;
-                            if(A.isChecked()) s="ABSENT";
-                            else s="PRESENT";
-                            refByDate.child(Date).child(box.getText().toString()).setValue(s);
-                            refByName.child(box.getText().toString()).child(Date).setValue(s);
-                            box.setText(usersList.get(++i));
-                        }
-                        else
-                        {
-                            flag=true;
-                            Toast.makeText(getApplicationContext(),"List Ended\nClick Submit Button!!!",Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-                prev.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if(!dateSet)
-                        {
-                            Toast.makeText(getApplicationContext(),"Set the Date First",Toast.LENGTH_SHORT).show();
-                        }
-                        else
-                        if(i!=0)
-                        {
-                            String s;
-                            if(A.isChecked()) s="ABSENT";
-                            else s="PRESENT";
-                            refByDate.child(Date).child(box.getText().toString()).setValue(s);
-                            refByName.child(box.getText().toString()).child(Date).setValue(s);
-                            box.setText(usersList.get(--i));
-                        }
-                        else
-                        {
-                            Toast.makeText(getApplicationContext(),"List Ended",Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-            }
-
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.w("unique", "loadPost:onCancelled", databaseError.toException());
             }
         });
 
