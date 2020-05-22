@@ -44,7 +44,7 @@ public class PayFees  extends AppCompatActivity{
                 }else  if (TextUtils.isEmpty(amount.getText().toString().trim())){
                     Toast.makeText(PayFees.this,"Amount is invalid",Toast.LENGTH_SHORT).show();
                 }else{
-                    payUsingUpi("Nilma","nilimasuryawanshi7@oksbi",amount.getText().toString());
+                    payUsingUpi("Vineet Paranjpe","paranjpevineet-1@okhdfcbank",amount.getText().toString());
                 }
             }
         });

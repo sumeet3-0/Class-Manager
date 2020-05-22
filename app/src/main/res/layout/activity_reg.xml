@@ -159,6 +159,15 @@
                 android:textColor="#FFFFFF"
                 android:textColorHint="#FFFFFF" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="1070dp"
+                android:text="Choose your batch according to your child\'s \n Std , Board , Location "
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF" />
+
 
 
             <Spinner

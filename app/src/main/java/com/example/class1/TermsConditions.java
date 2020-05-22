@@ -15,14 +15,7 @@ public class TermsConditions extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_terms_conditions);
-        back =(Button) findViewById(R.id.back);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),RegActivity.class);
-                startActivity(i);
-            }
-        });
+
 
     }
 }

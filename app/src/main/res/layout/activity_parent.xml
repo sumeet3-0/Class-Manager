@@ -124,16 +124,16 @@
             android:id="@+id/view"
             android:layout_width="140dp"
             android:layout_height="120dp"
-            app:srcCompat="@drawable/ring" />
+            app:srcCompat="@drawable/bell" />
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/chatCV"
         android:layout_width="145dp"
         android:layout_height="148dp"
-        android:layout_marginStart="210dp"
-        android:layout_marginTop="475dp"
-        android:layout_marginEnd="50dp"
+        android:layout_marginStart="135dp"
+        android:layout_marginTop="570dp"
+        android:layout_marginEnd="80dp"
         app:cardCornerRadius="15dp"
         app:cardElevation="20dp"
         >

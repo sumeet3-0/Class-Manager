@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">class1</string>
+    <string name="app_name">Paranjpe Classes</string>
     <string name="title_activity_register">RegisterActivity</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
@@ -102,7 +102,7 @@
     <string name="submit_form">Submit Form</string>
     <string name="Rules">1) The fees should be paid at the start of the year. Fees once paid will be non refundable.\n\n2) Classes should be attended regularly by the student on time.\n\n3) Every student should attempt all the tests conducted in class. Also,it is the job of the parents to monitor their child\'s regular attendance in classes as well as tests. The teacher will not be responsible for informing each and every parent about the same.\n\n4) Cancellation of admission will not be entertained. The fees will not be refunded at any circumstances.\n\n5) Misbehavior of any student in the class campus will not be entertained.If found guilty, the student\'s admission will be cancelled immediately without any refunding of fees.\n\n6) Student\'s vehicle should be parked on their own risk in the parking area only.\n\n7) No parent shall interfere in teacher\'s teaching.\n\n8) Calls before 8:00 a.m. and after 10 p.m. will not be entertained.</string>
     <string name="back">Back</string>
-    <string name="rules_and_conditions">Rules and Conditions</string>
+    <string name="rules_and_conditions">Terms and Conditions</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="username">Username</string>
@@ -114,6 +114,8 @@
     <string name="marks">Marks</string>
     <string name="fees">Fees</string>
     <string name="notifications">Notifications</string>
+    <string name="your_registered_email">Your Registered Email</string>
+    <string name="todo">TODO</string>
     <string-array name="std">
         <item>8th</item>
         <item>9th</item>

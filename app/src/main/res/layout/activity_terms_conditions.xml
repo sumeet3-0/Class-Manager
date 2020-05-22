@@ -33,13 +33,13 @@
                 android:text="@string/rules_and_conditions"
                 android:textColor="#FFFFFF"
                 android:textColorHint="#500FC3"
-                android:textSize="36sp"
+                android:textSize="32sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/editText6"
                 android:layout_width="342dp"
-                android:layout_height="673dp"
+                android:layout_height="500dp"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="10dp"
                 android:ems="10"
@@ -47,16 +47,6 @@
                 android:text="@string/Rules"
                 android:textColor="#FFFFFF"/>
 
-            <Button
-                android:id="@+id/back"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="120dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="80dp"
-                android:text="@string/back"
-                android:background="@drawable/round_button"
-                android:textColor="#3F51B5"/>
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
