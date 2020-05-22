@@ -18,7 +18,7 @@ public class Parent extends AppCompatActivity {
         marksCV = findViewById(R.id.marksCV);
         feesCV = findViewById(R.id.feesCV);
         chatCV = findViewById(R.id.chatCV);
-        notificationsCV = findViewById(R.id.viewCV);
+        notificationsCV = findViewById(R.id.notiCV);
         attendenceCV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
