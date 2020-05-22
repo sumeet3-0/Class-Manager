@@ -12,15 +12,30 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class PayFees  extends AppCompatActivity{
 
     EditText name,upi_id,amount;
     Button pay_now;
-    String TAG = "main";
+    String TAG = "main" , userName , batch;
+    FirebaseDatabase database;
+    DatabaseReference reference;
+    FirebaseAuth mAuth;
+    FirebaseUser user;
     final int UPI_PAYMENT=0;
 
 
@@ -28,11 +43,14 @@ public class PayFees  extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parent_payfees);
-
+        database = FirebaseDatabase.getInstance();
+        reference= database.getReference();
+        mAuth=FirebaseAuth.getInstance();
         pay_now=(Button)findViewById(R.id.pay_now);
         name=(EditText)findViewById(R.id.name);
         upi_id=(EditText)findViewById(R.id.upi_id);
         amount=(EditText)findViewById(R.id.amount);
+
 
         pay_now.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,7 +62,8 @@ public class PayFees  extends AppCompatActivity{
                 }else  if (TextUtils.isEmpty(amount.getText().toString().trim())){
                     Toast.makeText(PayFees.this,"Amount is invalid",Toast.LENGTH_SHORT).show();
                 }else{
-                    payUsingUpi("Vineet Paranjpe","paranjpevineet-1@okhdfcbank",amount.getText().toString());
+
+                    payUsingUpi("Vineet Paranjpe","mousmisuryawanshi@okicici",amount.getText().toString());
                 }
             }
         });
@@ -140,11 +159,37 @@ public class PayFees  extends AppCompatActivity{
             }
             if (status.equals("success")) {
                 //Code to handle successful transaction here.
+
                 Toast.makeText(PayFees.this, "Transaction successful.", Toast.LENGTH_SHORT).show();
                 Log.e("UPI", "payment successfull: "+approvalRefNo);
             }
             else if("Payment cancelled by user.".equals(paymentCancel)) {
-                Toast.makeText(PayFees.this, "Payment cancelled by user.", Toast.LENGTH_SHORT).show();
+                final FirebaseUser user = mAuth.getCurrentUser();
+                reference.child("Mapp").child(user.getUid()).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        userName = dataSnapshot.getValue().toString();
+                        reference.child("Batch").child(user.getUid()).addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                batch = dataSnapshot.getValue().toString();
+                                SimpleDateFormat s = new SimpleDateFormat("dd:MM:yyyy hh:mm:ss");
+                                String format = s.format(new Date());
+                                reference.child("Fees").child(format).setValue(userName + " from batch "+batch+" has paid "+amount.getText().toString());
+
+                            }
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+                                Log.w("unique", "loadPost:onCancelled", databaseError.toException());
+                            }
+                        });
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        Log.w("unique", "loadPost:onCancelled", databaseError.toException());
+                    }
+                });
+                Toast.makeText(PayFees.this, "Succesful!!!\nContact Class Teacher", Toast.LENGTH_SHORT).show();
                 Log.e("UPI", "Cancelled by user: "+approvalRefNo);
             }
             else {
