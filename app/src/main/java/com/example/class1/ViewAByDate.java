@@ -72,7 +72,7 @@ public class ViewAByDate extends AppCompatActivity {
                             usersList.add(s);
                         }
                         arrayAdapter =
-                                new ArrayAdapter<>(ViewAByDate.this, android.R.layout.simple_list_item_1, usersList);
+                                new ArrayAdapter<>(ViewAByDate.this, R.layout.customlist, usersList);
                         List.setAdapter(arrayAdapter);
                     }
                     @Override
@@ -99,7 +99,7 @@ public class ViewAByDate extends AppCompatActivity {
                             recordList.add(s);
                         }
                         arrayAdapter =
-                                new ArrayAdapter<>(ViewAByDate.this, android.R.layout.simple_list_item_1, recordList);
+                                new ArrayAdapter<>(ViewAByDate.this, R.layout.customlist, recordList);
                         List.setAdapter(arrayAdapter);
                     }
                     @Override

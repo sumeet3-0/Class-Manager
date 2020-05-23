@@ -50,7 +50,7 @@ public class ViewMByDate extends AppCompatActivity {
                     batchList.add(s);
                 }
                 arrayAdapter =
-                        new ArrayAdapter<>(ViewMByDate.this,android.R.layout.simple_spinner_dropdown_item,batchList);
+                        new ArrayAdapter<>(ViewMByDate.this,R.layout.customlist,batchList);
                 chooseBatch.setAdapter(arrayAdapter);
 
             }
@@ -73,7 +73,7 @@ public class ViewMByDate extends AppCompatActivity {
                             usersList.add(s);
                         }
                         arrayAdapter =
-                                new ArrayAdapter<>(ViewMByDate.this, android.R.layout.simple_list_item_1, usersList);
+                                new ArrayAdapter<>(ViewMByDate.this,R.layout.customlist, usersList);
                         List.setAdapter(arrayAdapter);
                     }
                     @Override
@@ -100,7 +100,7 @@ public class ViewMByDate extends AppCompatActivity {
                             recordList.add(s);
                         }
                         arrayAdapter =
-                                new ArrayAdapter<>(ViewMByDate.this, android.R.layout.simple_list_item_1, recordList);
+                                new ArrayAdapter<>(ViewMByDate.this, R.layout.customlist, recordList);
                         List.setAdapter(arrayAdapter);
                     }
                     @Override

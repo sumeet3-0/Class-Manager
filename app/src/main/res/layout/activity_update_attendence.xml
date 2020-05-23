@@ -37,7 +37,8 @@
         android:layout_marginTop="190dp"
         android:background="@drawable/round_button"
         android:text="Choose Date"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:textColor="#3F51B5"/>
 
     <Spinner
         android:id="@+id/chooseBatch"
@@ -82,6 +83,7 @@
         android:layout_marginTop="500dp"
         android:text="PREV"
         android:textSize="20dp"
+        android:textColor="#3F51B5"
         android:background = "@drawable/round_button"/>
 
     <Button
@@ -92,6 +94,8 @@
         android:layout_marginTop="500dp"
         android:text="NEXT"
         android:textSize="20dp"
+        android:textColor="#3F51B5"
+
         android:background = "@drawable/round_button"/>
 
     <Button
@@ -102,6 +106,7 @@
         android:layout_marginTop="500dp"
         android:text="SUBMIT"
         android:textSize="20dp"
+        android:textColor="#3F51B5"
         android:gravity="center"
         android:background = "@drawable/round_button"/>
 

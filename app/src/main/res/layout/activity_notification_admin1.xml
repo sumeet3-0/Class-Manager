@@ -26,6 +26,7 @@
         android:layout_marginTop="320dp"
         android:layout_marginRight="20dp"
         android:text="Update Notifications"
+        android:textColor="#3F51B5"
         android:textSize="30sp"
         android:textStyle="normal"
         android:background = "@drawable/round_button"/>
@@ -37,6 +38,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="460dp"
         android:layout_marginRight="20dp"
+        android:textColor="#3F51B5"
         android:text="View Notifications"
         android:textSize="30sp"
         android:textStyle="normal"

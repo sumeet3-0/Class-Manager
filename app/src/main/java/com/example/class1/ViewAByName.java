@@ -74,7 +74,7 @@ public class ViewAByName extends AppCompatActivity {
                             usersList.add(s);
                         }
                         arrayAdapter =
-                                new ArrayAdapter(ViewAByName.this, android.R.layout.simple_list_item_1, usersList);
+                                new ArrayAdapter(ViewAByName.this, R.layout.customlist, usersList);
                         List.setAdapter(arrayAdapter);
                     }
 
@@ -103,7 +103,7 @@ public class ViewAByName extends AppCompatActivity {
                             recordList.add(s);
                         }
                         arrayAdapter =
-                                new ArrayAdapter(ViewAByName.this, android.R.layout.simple_list_item_1, recordList);
+                                new ArrayAdapter(ViewAByName.this, R.layout.customlist, recordList);
                         List.setAdapter(arrayAdapter);
                     }
 

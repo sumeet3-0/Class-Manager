@@ -63,7 +63,7 @@ public class PayFees  extends AppCompatActivity{
                     Toast.makeText(PayFees.this,"Amount is invalid",Toast.LENGTH_SHORT).show();
                 }else{
 
-                    payUsingUpi("Vineet Paranjpe","mousmisuryawanshi@okicici",amount.getText().toString());
+                    payUsingUpi("Vineet Paranjpe","manoffriction@oksbi",amount.getText().toString());
                 }
             }
         });

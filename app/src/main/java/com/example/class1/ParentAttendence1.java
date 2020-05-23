@@ -53,8 +53,9 @@ public class ParentAttendence1 extends AppCompatActivity {
                                     usersList.add(s);
                                 }
                                 arrayAdapter =
-                                        new ArrayAdapter(ParentAttendence1.this, android.R.layout.simple_list_item_1, usersList);
+                                        new ArrayAdapter(ParentAttendence1.this, R.layout.customlist, usersList);
                                 List.setAdapter(arrayAdapter);
+
                             }
                             @Override
                             public void onCancelled(@NonNull DatabaseError databaseError) {

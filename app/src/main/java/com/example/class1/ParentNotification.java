@@ -40,7 +40,7 @@ public class ParentNotification extends AppCompatActivity {
                 }
                 Collections.reverse(usersList);
                 arrayAdapter =
-                        new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, usersList);
+                        new ArrayAdapter(getApplicationContext(), R.layout.customlist, usersList);
                 List.setAdapter(arrayAdapter);
             }
             @Override

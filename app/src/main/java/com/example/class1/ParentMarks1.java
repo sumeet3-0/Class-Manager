@@ -52,7 +52,7 @@ public class ParentMarks1 extends AppCompatActivity {
                                     usersList.add(s);
                                 }
                                 arrayAdapter =
-                                        new ArrayAdapter(ParentMarks1.this, android.R.layout.simple_list_item_1, usersList);
+                                        new ArrayAdapter(ParentMarks1.this, R.layout.customlist, usersList);
                                 List.setAdapter(arrayAdapter);
                             }
                             @Override
