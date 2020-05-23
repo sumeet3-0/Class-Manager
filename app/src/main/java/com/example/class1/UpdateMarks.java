@@ -67,7 +67,7 @@ public class UpdateMarks extends AppCompatActivity implements DatePickerDialog.O
                     batchList.add(s);
                 }
                 arrayAdapter =
-                        new ArrayAdapter<>(UpdateMarks.this, android.R.layout.simple_spinner_dropdown_item, batchList);
+                        new ArrayAdapter<>(UpdateMarks.this, R.layout.list, batchList);
                 chooseBatch.setAdapter(arrayAdapter);
             }
             @Override

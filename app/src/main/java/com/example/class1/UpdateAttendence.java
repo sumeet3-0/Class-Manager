@@ -68,7 +68,7 @@ public class UpdateAttendence extends AppCompatActivity implements DatePickerDia
                     batchList.add(s);
                 }
                 arrayAdapter =
-                        new ArrayAdapter<>(UpdateAttendence.this, android.R.layout.simple_spinner_dropdown_item, batchList);
+                        new ArrayAdapter<>(UpdateAttendence.this,android.R.layout.simple_spinner_dropdown_item, batchList);
                 chooseBatch.setAdapter(arrayAdapter);
             }
             @Override

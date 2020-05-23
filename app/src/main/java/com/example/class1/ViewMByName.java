@@ -50,7 +50,7 @@ public class ViewMByName extends AppCompatActivity {
                     batchList.add(s);
                 }
                 arrayAdapter =
-                        new ArrayAdapter<>(ViewMByName.this,R.layout.customlist,batchList);
+                        new ArrayAdapter<>(ViewMByName.this,android.R.layout.simple_spinner_dropdown_item,batchList);
                 chooseBatch.setAdapter(arrayAdapter);
 
             }
@@ -100,7 +100,7 @@ public class ViewMByName extends AppCompatActivity {
                             recordList.add(s);
                         }
                         arrayAdapter =
-                                new ArrayAdapter<>(ViewMByName.this, R.layout.customlist, recordList);
+                                new ArrayAdapter<>(ViewMByName.this, R.layout.list, recordList);
                         List.setAdapter(arrayAdapter);
                     }
                     @Override

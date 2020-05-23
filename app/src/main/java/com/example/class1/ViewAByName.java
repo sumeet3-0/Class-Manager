@@ -103,7 +103,7 @@ public class ViewAByName extends AppCompatActivity {
                             recordList.add(s);
                         }
                         arrayAdapter =
-                                new ArrayAdapter(ViewAByName.this, R.layout.customlist, recordList);
+                                new ArrayAdapter(ViewAByName.this, R.layout.list, recordList);
                         List.setAdapter(arrayAdapter);
                     }
 

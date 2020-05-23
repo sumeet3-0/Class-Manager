@@ -138,7 +138,7 @@ public class ViewList extends AppCompatActivity {
                             recordList.add(s);
                         }
                         arrayAdapter =
-                                new ArrayAdapter(ViewList.this, R.layout.customlist, recordList);
+                                new ArrayAdapter(ViewList.this, R.layout.list, recordList);
                         List.setAdapter(arrayAdapter);
                     }
                     @Override
