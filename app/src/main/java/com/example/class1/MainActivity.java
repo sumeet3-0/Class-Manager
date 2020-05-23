@@ -58,44 +58,16 @@ public class MainActivity extends AppCompatActivity  {
         parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if(!validateemail()|!validatepassword())
-                {
-                    return;
-                }
                 signIn(mEmailField.getText().toString(), mPasswordField.getText().toString(),"P");
             }
         });
         teacher.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if(!validateemail()|!validatepassword())
-                {
-                    return;
-                }
                 signIn(mEmailField.getText().toString(), mPasswordField.getText().toString(),"A");
             }
         });
 
-    }
-
-    private boolean validateemail() {
-        String occParentS = mEmailField.getText().toString();
-        if(occParentS.equals("")){
-            mEmailField.setError("Please Enter email address");
-            return false;
-        }
-        return true;
-    }
-
-    private boolean validatepassword() {
-        String occParentS = mPasswordField.getText().toString();
-        if(occParentS.equals("")){
-            mPasswordField.setError("Please Enter password");
-            return false;
-        }
-        return true;
     }
     private void signIn(final String email, String password, final String status) {
         // [START sign_in_with_email]
