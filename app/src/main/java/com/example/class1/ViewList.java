@@ -31,7 +31,7 @@ public class ViewList extends AppCompatActivity {
     ArrayList<String> usersList = new ArrayList<String>();
     ArrayList<String> recordList = new ArrayList<String>();
     ListView List;
-    String mediumS , b ="Batch" , m = "Mapp";
+    String mediumS , b ="Batch" , m = "Mapp" , n = "Notifications" , f="Fees" , c ="Chats";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +46,7 @@ public class ViewList extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     String s = postSnapshot.getKey();
-                    if(s.equals(b) | s.equals(m))
+                    if(s.equals(b) | s.equals(m) | s.equals(n) | s.equals(f) | s.equals(c))
                         continue;
                     batchList.add(s);
                 }

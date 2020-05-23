@@ -23,7 +23,7 @@ public class UpdateNotification extends AppCompatActivity implements DatePickerD
     DatabaseReference reference;
     TextView date;
     Button submit,chooseDate;
-    String Date;
+    String Date, e1="",e2="" , a=":" , s;
     EditText matter;
     int i =0;
     boolean flag=false , dateSet=false;
@@ -74,11 +74,9 @@ public class UpdateNotification extends AppCompatActivity implements DatePickerD
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-        String e1="",e2="";
         if(month<10) e2="0";
         if(dayOfMonth<10) e1="0";
-        String a = ":";
-        String s = e1+Integer.toString(dayOfMonth)+a+e2+Integer.toString(month+1)+a+Integer.toString(year);
+        s = e1+ Integer.toString(dayOfMonth)+a+e2+Integer.toString(month+1)+a+Integer.toString(year);
         date.setText(s);
         Date=s;
     }

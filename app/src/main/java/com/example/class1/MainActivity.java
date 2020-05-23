@@ -4,6 +4,7 @@ package com.example.class1;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -58,16 +59,46 @@ public class MainActivity extends AppCompatActivity  {
         parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!validateEmail()|!validatePassword() )
+                {
+                    return;
+                }
                 signIn(mEmailField.getText().toString(), mPasswordField.getText().toString(),"P");
             }
         });
         teacher.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!validateEmail()|!validatePassword() )
+                {
+                    return;
+                }
                 signIn(mEmailField.getText().toString(), mPasswordField.getText().toString(),"A");
             }
         });
 
+    }
+    private boolean validatePassword() {
+        String mPasswordFieldS = mPasswordField.getText().toString();
+        if(mPasswordFieldS.isEmpty())
+        {
+            mPasswordField.setError("Password Field Cannot be Empty!!");
+            return false;
+        }
+        return true;
+    }
+    private boolean validateEmail() {
+        String mEmailFieldS = mEmailField.getText().toString();
+        if(mEmailFieldS.isEmpty()){
+            mEmailField.setError("Email Field Cannot be Empty!!");
+            return false;
+        }else{
+            if(!Patterns.EMAIL_ADDRESS.matcher(mEmailFieldS).matches()){
+                mEmailField.setError("Please Enter valid email address");
+                return false;
+            }
+        }
+        return true;
     }
     private void signIn(final String email, String password, final String status) {
         // [START sign_in_with_email]
