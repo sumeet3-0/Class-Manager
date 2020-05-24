@@ -35,42 +35,7 @@ public class Fees extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         reference = database.getReference();
         List = findViewById(R.id.List);
-        List.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                AlertDialog diaBox = AskOption(parent, view, position, id);
-                diaBox.show();
-                return false;
-            }
 
-            private AlertDialog AskOption(final AdapterView<?> parent, View view, final int position, long id)
-            {
-                AlertDialog myQuittingDialogBox = new AlertDialog.Builder(Fees.this)
-                        .setTitle("Delete")
-                        .setMessage("Do you want to Delete")
-                        .setIcon(R.drawable.delete)
-
-                        .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
-
-                            public void onClick(DialogInterface dialog, int whichButton) {
-                                String s = (String) parent.getItemAtPosition(position);
-                                reference.child("Users").child(s).removeValue();
-                                dialog.dismiss();
-                            }
-
-                        })
-                        .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-
-                                dialog.dismiss();
-
-                            }
-                        })
-                        .create();
-
-                return myQuittingDialogBox;
-            }
-        });
         reference.child("Fees").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

@@ -29,7 +29,7 @@ public class CreateBatch extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 reference.child(newBatch.getText().toString()).child("Users").setValue("Users");
-                Toast.makeText(getApplicationContext(),"Batch Succesfully Created!!!",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"Batch Successfully Created!!!",Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(getApplicationContext(),Batches.class);
                 startActivity(i);
             }

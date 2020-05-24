@@ -15,7 +15,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class UpdateNotification extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
@@ -53,8 +55,11 @@ public class UpdateNotification extends AppCompatActivity implements DatePickerD
                 }
                 else
                 {
-                    reference.child("Notifications").child(date.getText().toString()).setValue(matter.getText().toString());
-                    Toast.makeText(getApplicationContext(),"Recorded Succesfully!!!",Toast.LENGTH_SHORT).show();
+                    SimpleDateFormat s = new SimpleDateFormat("dd:MM:yyyy hh:mm:ss");
+                    String format = s.format(new Date());
+
+                    reference.child("Notifications").child(format).setValue(date.getText().toString()+":"+matter.getText().toString());
+                    Toast.makeText(getApplicationContext(),"Recorded Successfully!!!",Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(getApplicationContext(),NotificationAdmin1.class);
                     startActivity(i);
                 }

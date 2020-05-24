@@ -181,7 +181,7 @@ public class UpdateMarks extends AppCompatActivity implements DatePickerDialog.O
                     reference.child(name).child("Marks By Date").child(Date).child(box.getText().toString()).setValue(s);
                     reference.child(name).child("Marks By Name").child(box.getText().toString()).child(Date).setValue(s);
                     box.setText(usersList.get(usersList.size()-1));
-                    Toast.makeText(getApplicationContext(),"Recorded Succesfully!!!",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Recorded Successfully!!!",Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(getApplicationContext(),AdminMarks1.class);
                     startActivity(i);
                 }

@@ -1,7 +1,11 @@
 package com.example.class1;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -36,7 +40,7 @@ public class ViewN extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 usersList.clear();
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                    String s = postSnapshot.getKey() + " : " + postSnapshot.getValue();
+                    String s =  postSnapshot.getValue().toString();
                     usersList.add(s);
                 }
                 Collections.reverse(usersList);
