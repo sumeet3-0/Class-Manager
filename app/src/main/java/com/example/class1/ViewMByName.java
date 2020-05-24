@@ -31,7 +31,7 @@ public class ViewMByName extends AppCompatActivity {
     ArrayList<String> usersList = new ArrayList<String>();
     ArrayList<String> recordList = new ArrayList<String>();
     ListView List;
-    String batch , b ="Batch" , m = "Mapp" , n = "Notifications" , f="Fees" , c ="Chats";
+    String batch ,u="UPI", b ="Batch" , m = "Mapp" , n = "Notifications" , f="Fees" , c ="Chats";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,12 +45,12 @@ public class ViewMByName extends AppCompatActivity {
             public void onDataChange(@NotNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     String s = postSnapshot.getKey();
-                    if(s.equals(b) | s.equals(m) | s.equals(n) | s.equals(f) | s.equals(c))
+                    if(s.equals(u) | s.equals(b) | s.equals(m) | s.equals(n) | s.equals(f) | s.equals(c))
                         continue;
                     batchList.add(s);
                 }
                 arrayAdapter =
-                        new ArrayAdapter<>(ViewMByName.this,R.layout.customlist,batchList);
+                        new ArrayAdapter<>(ViewMByName.this,android.R.layout.simple_spinner_dropdown_item,batchList);
                 chooseBatch.setAdapter(arrayAdapter);
 
             }
