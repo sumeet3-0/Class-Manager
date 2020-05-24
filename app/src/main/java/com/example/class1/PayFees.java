@@ -172,7 +172,7 @@ public class PayFees  extends AppCompatActivity{
                 //Code to handle successful transaction here.
 
                 Toast.makeText(PayFees.this, "Transaction successful.", Toast.LENGTH_SHORT).show();
-                Log.e("UPI", "payment successfull: "+approvalRefNo);
+                Log.e("UPI", "payment successful: "+approvalRefNo);
             }
             else if("Payment cancelled by user.".equals(paymentCancel)) {
                 final FirebaseUser user = mAuth.getCurrentUser();
