@@ -62,7 +62,7 @@ public class RegActivity extends AppCompatActivity {
     private Button save;
     FirebaseDatabase database;
     DatabaseReference reference;
-    String profileImageurl ,  b ="Batch" , m = "Mapp" , n = "Notifications" , f="Fees" , c ="Chats";;
+    String profileImageurl ,u="UPI",  b ="Batch" , m = "Mapp" , n = "Notifications" , f="Fees" , c ="Chats";;
     Uri uriProfileImage;
     CheckBox checkBox2;
     ArrayAdapter arrayAdapter;
@@ -97,7 +97,7 @@ public class RegActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     String s = postSnapshot.getKey();
-                    if(s.equals(b) | s.equals(m) | s.equals(n) | s.equals(f) | s.equals(c))
+                    if(s.equals(u) | s.equals(b) | s.equals(m) | s.equals(n) | s.equals(f) | s.equals(c))
                         continue;
                     batchList.add(s);
                 }

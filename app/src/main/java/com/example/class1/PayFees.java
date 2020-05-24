@@ -63,7 +63,18 @@ public class PayFees  extends AppCompatActivity{
                     Toast.makeText(PayFees.this,"Amount is invalid",Toast.LENGTH_SHORT).show();
                 }else{
 
-                    payUsingUpi("Vineet Paranjpe","manoffriction@oksbi",amount.getText().toString());
+                    reference.child("UPI").child("id").addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                           String UPI = dataSnapshot.getValue().toString();
+                            Toast.makeText(PayFees.this,"Paying to "+UPI,Toast.LENGTH_SHORT).show();
+                            payUsingUpi("Vineet Paranjpe",UPI,amount.getText().toString());
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                            Log.w("unique", "loadPost:onCancelled", databaseError.toException());
+                        }
+                    });
                 }
             }
         });
