@@ -12,40 +12,44 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:fontFamily="serif"
-        android:gravity="center_horizontal"
+        android:gravity="center"
         android:text="Create Batch"
         android:textAllCaps="true"
         android:textColor="#FBF9F9"
         android:textSize="50sp" />
 
-    <EditText
-        android:id="@+id/newBatch"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="300dp"
-        android:layout_marginRight="20dp"
-        android:hint="Write Batch Name Here"
-        android:textColorHint="#FFFFFF"
-        android:textColor="#FFFFFF"
-        android:textSize="30sp"
-        android:textStyle="normal"
-        android:padding="15dp" />
+        android:layout_marginTop="300dp">
 
-    <Button
-        android:id="@+id/select"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="450dp"
-        android:layout_marginRight="20dp"
-        android:text="Create Batch"
-        android:textColor="#3F51B5"
-        android:textColorHighlight="#FAF8F8"
-        android:textSize="30sp"
-        android:textStyle="normal"
-        android:background = "@drawable/round_button"
-        />
+        <EditText
+            android:id="@+id/newBatch"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:hint="Write Batch Name Here"
+            android:textColorHint="#FFFFFF"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            android:textStyle="normal"
+            android:padding="15dp" />
+
+        <Button
+            android:id="@+id/select"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/round_button"
+            android:text="Create"
+            android:textColor="#3F51B5"
+            android:textColorHighlight="#FAF8F8"
+            android:textSize="30sp"
+            android:textStyle="normal" />
+    </LinearLayout>
+
+
 
 
 
