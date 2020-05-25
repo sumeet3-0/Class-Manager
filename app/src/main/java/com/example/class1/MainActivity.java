@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +37,14 @@ public class MainActivity extends AppCompatActivity  {
     private FirebaseDatabase database;
     private DatabaseReference reference ;
     private String userName,admin="admin";
+    ProgressBar p ;
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        p.setVisibility(View.GONE);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +57,8 @@ public class MainActivity extends AppCompatActivity  {
         parent = findViewById(R.id.parent);
         database = FirebaseDatabase.getInstance();
         reference = database.getReference();
+        p = findViewById(R.id.progressBar1);
+        p.setVisibility(View.GONE);
         regHere.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -106,6 +117,7 @@ public class MainActivity extends AppCompatActivity  {
                             FirebaseUser user = mAuth.getCurrentUser();
                            if(status=="A")
                            {
+                               p.setVisibility(View.VISIBLE);
                                reference.child("Mapp").child(user.getUid()).addValueEventListener(new ValueEventListener() {
                                    @Override
                                    public void onDataChange(DataSnapshot dataSnapshot) {
@@ -132,6 +144,7 @@ public class MainActivity extends AppCompatActivity  {
                            }
                            else
                            {
+                               p.setVisibility(View.VISIBLE);
                                reference.child("Mapp").child(user.getUid()).addValueEventListener(new ValueEventListener() {
                                    @Override
                                    public void onDataChange(DataSnapshot dataSnapshot) {
