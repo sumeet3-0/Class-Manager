@@ -8,6 +8,19 @@
     android:foregroundTint="#00BCD4"
     tools:context=".MainActivity">
 
+    <ProgressBar
+        android:id="@+id/progressBar1"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="46dp"
+        android:layout_height="37dp"
+        android:layout_gravity="center_horizontal"
+        android:foregroundGravity="center_horizontal"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/email"
         android:layout_width="275dp"

@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +37,14 @@ public class MainActivity extends AppCompatActivity  {
     private FirebaseDatabase database;
     private DatabaseReference reference ;
     private String userName,admin="admin";
+    ProgressBar p ;
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        p.setVisibility(View.GONE);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +57,8 @@ public class MainActivity extends AppCompatActivity  {
         parent = findViewById(R.id.parent);
         database = FirebaseDatabase.getInstance();
         reference = database.getReference();
+        p = findViewById(R.id.progressBar1);
+        p.setVisibility(View.GONE);
         regHere.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,6 +74,7 @@ public class MainActivity extends AppCompatActivity  {
                 {
                     return;
                 }
+                p.setVisibility(View.VISIBLE);
                 signIn(mEmailField.getText().toString(), mPasswordField.getText().toString(),"P");
             }
         });
@@ -74,6 +86,7 @@ public class MainActivity extends AppCompatActivity  {
                 {
                     return;
                 }
+                p.setVisibility(View.VISIBLE);
                 signIn(mEmailField.getText().toString(), mPasswordField.getText().toString(),"A");
 
             }
@@ -106,6 +119,7 @@ public class MainActivity extends AppCompatActivity  {
                             FirebaseUser user = mAuth.getCurrentUser();
                            if(status=="A")
                            {
+
                                reference.child("Mapp").child(user.getUid()).addValueEventListener(new ValueEventListener() {
                                    @Override
                                    public void onDataChange(DataSnapshot dataSnapshot) {
@@ -113,11 +127,13 @@ public class MainActivity extends AppCompatActivity  {
                                        if(userName.equals(admin))
                                        {
                                            Toast.makeText(getApplicationContext(), "Sign in Success!!!\nWelcome "+userName,Toast.LENGTH_LONG).show();
+
                                            Intent i = new Intent(getApplicationContext(), Admin.class);
                                            startActivity(i);
                                        }
                                        else
                                        {
+                                           p.setVisibility(View.GONE);
                                            Toast.makeText(getApplicationContext(), "Not an Admin!!!",
                                                    Toast.LENGTH_LONG).show();
                                        }
@@ -125,6 +141,7 @@ public class MainActivity extends AppCompatActivity  {
                                    }
                                    @Override
                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                                       p.setVisibility(View.GONE);
                                        Log.w("unique", "loadPost:onCancelled", databaseError.toException());
                                    }
                                });
@@ -132,6 +149,7 @@ public class MainActivity extends AppCompatActivity  {
                            }
                            else
                            {
+
                                reference.child("Mapp").child(user.getUid()).addValueEventListener(new ValueEventListener() {
                                    @Override
                                    public void onDataChange(DataSnapshot dataSnapshot) {
@@ -143,12 +161,14 @@ public class MainActivity extends AppCompatActivity  {
                                    }
                                    @Override
                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                                       p.setVisibility(View.GONE);
                                        Log.w("unique", "loadPost:onCancelled", databaseError.toException());
                                    }
                                });
                            }
 
                         } else {
+                            p.setVisibility(View.GONE);
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
                             Toast.makeText(getApplicationContext(), "Authentication failed.",

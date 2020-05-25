@@ -39,7 +39,7 @@ public class UpdateMarks extends AppCompatActivity implements DatePickerDialog.O
     EditText marks,outof;
     Spinner chooseBatch ;
     ArrayAdapter<String> arrayAdapter;
-    String name , b ="Batch" , m = "Mapp";
+    String name, u="UPI", b ="Batch" , m = "Mapp" , n = "Notifications" , f="Fees" , c ="Chats";
     int i =0;
     boolean flag=false , dateSet=false;
     @Override
@@ -62,7 +62,7 @@ public class UpdateMarks extends AppCompatActivity implements DatePickerDialog.O
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     String s = postSnapshot.getKey();
-                    if (s.equals(b) | s.equals(m))
+                    if(s.equals(u) | s.equals(b) | s.equals(m) | s.equals(n) | s.equals(f) | s.equals(c))
                         continue;
                     batchList.add(s);
                 }
@@ -87,7 +87,14 @@ public class UpdateMarks extends AppCompatActivity implements DatePickerDialog.O
                             String s = postSnapshot.getKey();
                             usersList.add(s);
                         }
-                        box.setText(usersList.get(0));
+                        if(usersList.isEmpty())
+                        {
+                            box.setText("List is Empty");
+                        }
+                        else
+                        {
+                            box.setText(usersList.get(0));
+                        }
                         next.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
