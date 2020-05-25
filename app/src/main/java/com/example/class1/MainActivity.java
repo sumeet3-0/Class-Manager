@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity  {
                 {
                     return;
                 }
+                p.setVisibility(View.VISIBLE);
                 signIn(mEmailField.getText().toString(), mPasswordField.getText().toString(),"P");
             }
         });
@@ -85,6 +86,7 @@ public class MainActivity extends AppCompatActivity  {
                 {
                     return;
                 }
+                p.setVisibility(View.VISIBLE);
                 signIn(mEmailField.getText().toString(), mPasswordField.getText().toString(),"A");
 
             }
@@ -117,7 +119,7 @@ public class MainActivity extends AppCompatActivity  {
                             FirebaseUser user = mAuth.getCurrentUser();
                            if(status=="A")
                            {
-                               p.setVisibility(View.VISIBLE);
+
                                reference.child("Mapp").child(user.getUid()).addValueEventListener(new ValueEventListener() {
                                    @Override
                                    public void onDataChange(DataSnapshot dataSnapshot) {
@@ -130,6 +132,7 @@ public class MainActivity extends AppCompatActivity  {
                                        }
                                        else
                                        {
+                                           p.setVisibility(View.GONE);
                                            Toast.makeText(getApplicationContext(), "Not an Admin!!!",
                                                    Toast.LENGTH_LONG).show();
                                        }
@@ -137,6 +140,7 @@ public class MainActivity extends AppCompatActivity  {
                                    }
                                    @Override
                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                                       p.setVisibility(View.GONE);
                                        Log.w("unique", "loadPost:onCancelled", databaseError.toException());
                                    }
                                });
@@ -144,7 +148,7 @@ public class MainActivity extends AppCompatActivity  {
                            }
                            else
                            {
-                               p.setVisibility(View.VISIBLE);
+
                                reference.child("Mapp").child(user.getUid()).addValueEventListener(new ValueEventListener() {
                                    @Override
                                    public void onDataChange(DataSnapshot dataSnapshot) {
@@ -156,12 +160,14 @@ public class MainActivity extends AppCompatActivity  {
                                    }
                                    @Override
                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                                       p.setVisibility(View.GONE);
                                        Log.w("unique", "loadPost:onCancelled", databaseError.toException());
                                    }
                                });
                            }
 
                         } else {
+                            p.setVisibility(View.GONE);
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
                             Toast.makeText(getApplicationContext(), "Authentication failed.",
