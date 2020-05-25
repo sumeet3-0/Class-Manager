@@ -127,6 +127,7 @@ public class MainActivity extends AppCompatActivity  {
                                        if(userName.equals(admin))
                                        {
                                            Toast.makeText(getApplicationContext(), "Sign in Success!!!\nWelcome "+userName,Toast.LENGTH_LONG).show();
+
                                            Intent i = new Intent(getApplicationContext(), Admin.class);
                                            startActivity(i);
                                        }
