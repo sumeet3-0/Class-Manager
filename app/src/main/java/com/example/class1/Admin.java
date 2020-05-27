@@ -3,6 +3,7 @@ package com.example.class1;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -10,6 +11,14 @@ import androidx.cardview.widget.CardView;
 public class Admin extends AppCompatActivity {
 
     CardView attendenceCV,marksCV,feesCV,viewCV,notiCV,reqCV;
+    ProgressBar p;
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        p.setVisibility(View.GONE);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,10 +29,14 @@ public class Admin extends AppCompatActivity {
         viewCV = findViewById(R.id.viewCV);
         notiCV = findViewById(R.id.notiCV);
         reqCV = findViewById(R.id.reqCV);
+        p = findViewById(R.id.ProgressBar1);
+        p.setVisibility(View.GONE);
+
         attendenceCV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
             Intent i = new Intent(getApplicationContext(),AdminAttendence1.class);
+            p.setVisibility(View.VISIBLE);
             startActivity(i);
             }
         });
@@ -31,6 +44,7 @@ public class Admin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(),AdminMarks1.class);
+                p.setVisibility(View.VISIBLE);
                 startActivity(i);
             }
         });
@@ -38,6 +52,7 @@ public class Admin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(),Fees.class);
+                p.setVisibility(View.VISIBLE);
                 startActivity(i);
             }
         });
@@ -45,6 +60,7 @@ public class Admin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(),Batches.class);
+                p.setVisibility(View.VISIBLE);
                 startActivity(i);
             }
 
@@ -53,6 +69,7 @@ public class Admin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(),NotificationAdmin1.class);
+                p.setVisibility(View.VISIBLE);
                 startActivity(i);
             }
         });
@@ -60,6 +77,7 @@ public class Admin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(),Discussion.class);
+                p.setVisibility(View.VISIBLE);
                 startActivity(i);
             }
 

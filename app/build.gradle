@@ -7,9 +7,10 @@ android {
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.example.class1"
-        minSdkVersion 15
+        minSdkVersion 20
         targetSdkVersion 29
         versionCode 1
+        multiDexEnabled true
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -36,6 +37,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage:19.1.1'
     implementation "androidx.core:core-ktx:+"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.android.support:multidex:1.0.3'
+
 
     implementation 'com.basgeekball:awesome-validation:1.3'
 }

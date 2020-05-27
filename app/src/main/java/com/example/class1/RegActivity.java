@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.ImageDecoder;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
@@ -23,6 +24,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -61,11 +63,21 @@ public class RegActivity extends AppCompatActivity {
     private Button submit;
     private Button save;
     FirebaseDatabase database;
+
+
+    private String userName;
     DatabaseReference reference;
     String profileImageurl ,u="UPI",  b ="Batch" , m = "Mapp" , n = "Notifications" , f="Fees" , c ="Chats";;
     Uri uriProfileImage;
     CheckBox checkBox2;
     ArrayAdapter arrayAdapter;
+
+    @Override
+    public void onPostResume()
+    {
+        super.onPostResume();
+        progressBar.setVisibility(View.GONE);
+    }
     public static final Pattern EMAIL_ADDRESS=Pattern.compile("[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}"+"\\@"+"[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}"+"(" + "\\." + "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}"+")+");
 
 
@@ -92,11 +104,16 @@ public class RegActivity extends AppCompatActivity {
         studentImage=findViewById(R.id.studentImage);
         checkBox2=findViewById(R.id.checkBox2);
         mAuth = FirebaseAuth.getInstance();
+
+
+
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+
+
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                    String s = postSnapshot.getKey();
+                  String s = postSnapshot.getKey();
                     if(s.equals(u) | s.equals(b) | s.equals(m) | s.equals(n) | s.equals(f) | s.equals(c))
                         continue;
                     batchList.add(s);
@@ -115,6 +132,7 @@ public class RegActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 showImageChooser();
+
             }
         });
         rules.setOnClickListener(new View.OnClickListener() {
@@ -131,6 +149,8 @@ public class RegActivity extends AppCompatActivity {
                 {
                     return;
                 }
+                progressBar.setVisibility(View.VISIBLE);
+                uploadImageToFirebaseStorage();
                 createAccount(mEmailField.getText().toString(), mPasswordField.getText().toString());
             }
 
@@ -259,6 +279,7 @@ public class RegActivity extends AppCompatActivity {
         // [END create_user_with_email]
 
     }
+    @RequiresApi(api = Build.VERSION_CODES.P)
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -271,14 +292,18 @@ public class RegActivity extends AppCompatActivity {
                 ImageDecoder.Source source=ImageDecoder.createSource(this.getContentResolver(),uriProfileImage);
                 Bitmap bitmap=ImageDecoder.decodeBitmap(source);
                 studentImage.setImageBitmap(bitmap);
-                uploadImageToFirebaseStorage();
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
+
+
     private void uploadImageToFirebaseStorage(){
-        StorageReference profileImageRef= FirebaseStorage.getInstance().getReference("profilepics/"+System.currentTimeMillis()+".jpg");
+
+
+        StorageReference profileImageRef= FirebaseStorage.getInstance().getReference("profilepics/" + name.getText().toString() +".jpg");
         if(uriProfileImage!=null)
         {
             profileImageRef.putFile(uriProfileImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {

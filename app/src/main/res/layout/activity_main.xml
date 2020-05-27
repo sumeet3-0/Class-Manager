@@ -9,7 +9,7 @@
     tools:context=".MainActivity">
 
     <ProgressBar
-        android:id="@+id/progressBar1"
+        android:id="@+id/progressBar"
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="46dp"
         android:layout_height="37dp"

@@ -96,6 +96,8 @@ public class UpdateAttendence extends AppCompatActivity implements DatePickerDia
                     {
                         box.setText(usersList.get(0));
                     }
+
+                    
                     next.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {

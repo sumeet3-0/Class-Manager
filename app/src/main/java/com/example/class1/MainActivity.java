@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity  {
         parent = findViewById(R.id.parent);
         database = FirebaseDatabase.getInstance();
         reference = database.getReference();
-        p = findViewById(R.id.progressBar1);
+        p = findViewById(R.id.progressBar);
         p.setVisibility(View.GONE);
         regHere.setOnClickListener(new View.OnClickListener() {
             @Override

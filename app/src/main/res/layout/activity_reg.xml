@@ -34,12 +34,12 @@
 
             <Button
                 android:id="@+id/save"
-                android:layout_width="119dp"
+                android:layout_width="125dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="140dp"
                 android:layout_marginTop="340dp"
                 android:background="@drawable/round_button"
-                android:text="Choose Image"
+                android:text="Choose ID Image "
                 android:textColor="#3F51B5"
                 android:textSize="14sp" />
 
@@ -154,8 +154,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="50dp"
-                android:layout_marginTop="1270dp"
-                android:text="Please tick the below checkbox\n before submitting form"
+                android:layout_marginTop="1230dp"
+                android:text="Please tick the below checkbox\n and choose ID image above\n before submitting form"
                 android:textColor="#FFFFFF"
                 android:textColorHint="#FFFFFF" />
 
@@ -163,7 +163,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="50dp"
-                android:layout_marginTop="1070dp"
+                android:layout_marginTop="1100dp"
                 android:text="Choose your batch according to your child\'s \n Std , Board , Location "
                 android:textColor="#FFFFFF"
                 android:textColorHint="#FFFFFF" />
@@ -180,8 +180,10 @@
 
             <ProgressBar
                 android:id="@+id/progressBar"
-                android:layout_width="wrap_content"
-                android:layout_height="38dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="170dp"
+                android:layout_marginTop="1065dp"
                 android:outlineAmbientShadowColor="#FFFFFF" />
 
             <CheckBox
